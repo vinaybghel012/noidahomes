@@ -1,0 +1,2891 @@
+"use client";
+
+import { HeartIcon, MapPinIcon, HomeModernIcon, ArrowsPointingOutIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import {ArrowUpIcon, StarIcon } from '@heroicons/react/24/outline';
+import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
+import { FaBath, FaQuoteLeft  } from 'react-icons/fa';  // Using react-icons library
+import { useState } from 'react';
+import Image from "next/image";
+import { 
+  BuildingOfficeIcon, 
+  BuildingStorefrontIcon,  
+  MapIcon, 
+  BuildingLibraryIcon,
+  CurrencyRupeeIcon,
+  ChartBarIcon
+} from '@heroicons/react/24/outline';
+import Link from 'next/link';
+
+import { 
+  ShieldCheckIcon, 
+  CheckBadgeIcon, 
+  NoSymbolIcon, 
+  PhoneIcon, 
+  EyeIcon, 
+  UserGroupIcon,
+  ClockIcon,
+} from '@heroicons/react/24/outline';
+
+import { 
+  CalendarIcon, 
+  TagIcon,
+  FireIcon,
+} from '@heroicons/react/24/outline';
+import { FireIcon as FireIconSolid } from '@heroicons/react/24/solid';
+
+import { 
+  HandThumbUpIcon,
+  
+} from '@heroicons/react/24/outline';
+import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
+import { 
+  KeyIcon,
+  BanknotesIcon,
+  PaintBrushIcon,
+  CogIcon,
+  ArrowRightIcon,
+  CheckCircleIcon,
+  DocumentTextIcon,
+} from '@heroicons/react/24/outline';
+import {  
+  TrophyIcon 
+} from '@heroicons/react/24/outline';
+import { 
+  EnvelopeIcon,
+  UserIcon,
+  DevicePhoneMobileIcon
+} from '@heroicons/react/24/outline';
+import { 
+  ChevronDownIcon,
+  QuestionMarkCircleIcon,
+  ChatBubbleLeftRightIcon
+} from '@heroicons/react/24/outline';
+
+import Prelaunch_section from './components/Prelaunch_section';
+
+import EmiCalculator from './components/Emicalculator';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+
+
+interface FAQItem {
+  id: number;
+  question: string;
+  answer: string;
+  category: 'general' | 'buying' | 'selling' | 'legal';
+}
+
+
+interface FormData {
+  name: string;
+  mobile: string;
+  email: string;
+  preferredLocation: string;
+  budget: string;
+  propertyType: string;
+  message: string;
+}
+
+interface Partner {
+  id: number;
+  name: string;
+  logo: string;
+  type: 'builder' | 'bank' | 'legal' | 'interior';
+  projects: string;
+  established: string;
+  rating: number;
+}
+
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.ComponentType<any>;
+  features: string[];
+  price: string;
+  duration: string;
+  popular?: boolean;
+  cta: string;
+  route: string;
+  stats: {
+    value: string;
+    label: string;
+  }[];
+}
+
+interface Testimonial {
+  id: number;
+  name: string;
+  location: string;
+  rating: number;
+  review: string;
+  photo: string;
+  property: string;
+  purchaseDate: string;
+  verified: boolean;
+  likes: number;
+  tags: string[];
+}
+
+interface Project {
+  id: number;
+  name: string;
+  builder: string;
+  location: string;
+  price: string;
+  pricePerSqft: string;
+  possessionDate: string;
+  launchDate: string;
+  image: string;
+  unitTypes: string[];
+  offers: string[];
+  reraId: string;
+  status: 'new-launch' | 'hot-selling' | 'almost-sold';
+  rating: number;
+  totalUnits: number;
+  availableUnits: number;
+  amenities: string[];
+}
+
+interface Feature {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.ComponentType<any>;
+  highlight?: string;
+  badge?: string;
+}
+
+interface Category {
+  id: number;
+  name: string;
+  description: string;
+  icon: React.ComponentType<any>;
+  image: string;
+  properties: string;
+  startingPrice: string;
+  growth: string;
+  tags: string[];
+  route: string;
+  stats: {
+    label: string;
+    value: string;
+  }[];
+}
+
+
+interface Property {
+  id: number;
+  title: string;
+  location: string;
+  price: string;
+  pricePerSqft: string;
+  sqft: string;
+  bedrooms: number;
+  bathrooms: number;
+  image: string;
+  featured: boolean;
+  amenities: string[];
+}
+//3rd
+
+
+interface Location {
+  id: number;
+  name: string;
+  area: string;
+  description: string;
+  image: string;
+  properties: string;
+  avgPrice: string;
+  growth: string;
+  rating: number;
+  tags: string[];
+}
+
+export default function Home() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [propertyType, setPropertyType] = useState('any');
+  const [priceRange, setPriceRange] = useState('any');
+
+  const propertyTypes = [
+    { value: 'any', label: 'Any Type' },
+    { value: 'highrise', label: 'Highrise' },
+    { value: 'lowrise', label: 'Lowrise' },
+    { value: 'Plot', label: 'Plot' },
+    { value: 'apartment', label: 'Apartment' },
+    { value: 'villa', label: 'Villa' },
+    // { value: 'condo', label: 'Condo' },
+  ];
+
+  const priceRanges = [
+    { value: 'any', label: 'Any Price' },
+    { value: '10L to 1Cr', label: 'Under 50lac' },
+    { value: '1Cr-1.5Cr', label: '1Cr - 1.5Cr' },
+    { value: '1.5Cr-2', label: '1.5Cr - 2Cr' },
+    { value: '2Cr+', label: '2Cr+' },
+  ];
+  // JSX Return
+  const [favorites, setFavorites] = useState<number[]>([]);
+
+  const toggleFavorite = (id: number) => {
+    setFavorites(prev =>
+      prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id]
+    );
+  };
+
+const properties: Property[] = [
+  // ===============================
+  // SHRI VINAYAKA GROUP – RETAIL
+  // ===============================
+  {
+    id: 1,
+    title: "SVG Galleria",
+    location: "Greater Noida",
+    price: "₹22,990 / sqft onwards",
+    pricePerSqft: "₹22,990/sqft",
+    sqft: "270 – 915 sqft",
+    bedrooms: 0,
+    bathrooms: 0,
+    image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600",
+    featured: true,
+    amenities: [
+      "Retail Shops",
+      "Pre-Leased Options",
+      "Road Facing",
+      "Corner Shops",
+      "High Footfall"
+    ]
+  },
+
+  {
+    id: 2,
+    title: "SVG Heights",
+    location: "Greater Noida",
+    price: "₹11,490 / sqft onwards",
+    pricePerSqft: "₹11,490/sqft",
+    sqft: "668 – 1440 sqft",
+    bedrooms: 1,
+    bathrooms: 1,
+    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=600",
+    featured: false,
+    amenities: [
+      "Serviced Suites",
+      "Premium Living",
+      "Elevator Access",
+      "Security"
+    ]
+  },
+
+  // ===============================
+  // SVG TOWN SQUARE 2 – NEW LAUNCH
+  // ===============================
+  {
+    id: 3,
+    title: "SVG Town Square 2",
+    location: "Alpha 2, Greater Noida (200m from Delta 1 Metro)",
+    price: "₹22,990 / sqft onwards",
+    pricePerSqft: "₹22,990/sqft",
+    sqft: "270 – 915 sqft",
+    bedrooms: 0,
+    bathrooms: 0,
+    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600",
+    featured: true,
+    amenities: [
+      "Double Height Retail",
+      "Banquet Hall",
+      "Gym",
+      "Private Theatre",
+      "Rooftop Dining",
+      "Infinity Pool"
+    ]
+  },
+
+  {
+    id: 4,
+    title: "SVG Town Square 2 – Premium Suites",
+    location: "Alpha 2, Greater Noida",
+    price: "₹11,490 / sqft onwards",
+    pricePerSqft: "₹11,490/sqft",
+    sqft: "668 – 1440 sqft",
+    bedrooms: 1,
+    bathrooms: 1,
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600",
+    featured: true,
+    amenities: [
+      "Premium Suites",
+      "19 Units Per Floor",
+      "Serviced Living",
+      "High ROI"
+    ]
+  },
+
+  // ===============================
+  // GODREJ ARDEN – RESIDENTIAL
+  // ===============================
+  {
+    id: 5,
+    title: "Godrej Arden",
+    location: "Greater Noida",
+    price: "₹1.63 Cr onwards",
+    pricePerSqft: "₹11,812/sqft",
+    sqft: "1375 – 2700 sqft",
+    bedrooms: 4,
+    bathrooms: 4,
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600",
+    featured: true,
+    amenities: [
+      "9.58 Acres Land",
+      "45,000 sqft Clubhouse",
+      "4 Side Open Plot",
+      "Green Belt",
+      "Luxury Living"
+    ]
+  },
+
+  // ===============================
+  // TRIBECA – ICONIC TOWER
+  // ===============================
+  {
+    id: 6,
+    title: "Tribeca Iconic Tower – Aspire Leisure Valley",
+    location: "Noida Extension",
+    price: "₹8,449 / sqft",
+    pricePerSqft: "₹8,449/sqft",
+    sqft: "4020 sqft",
+    bedrooms: 4,
+    bathrooms: 5,
+    image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=600",
+    featured: true,
+    amenities: [
+      "G+45 Floors",
+      "4 Units Per Floor",
+      "Chapman Taylor Design",
+      "NBCC Execution",
+      "Supreme Court Supervised"
+    ]
+  }
+];
+
+
+  ///3rd 
+  const locations: Location[] = [
+    // {
+    //   id: 1,
+    //   name: "Gurugram",
+    //   area: "Cyber City & DLF Phases",
+    //   description: "India's corporate hub with premium residential complexes and world-class infrastructure",
+    //   image: "https://images.unsplash.com/photo-1592210454359-904b3ef8e8a6?w=600",
+    //   properties: "2,500+",
+    //   avgPrice: "₹1.2Cr - ₹5Cr",
+    //   growth: "12%",
+    //   rating: 4.8,
+    //   tags: ["Corporate Hub", "Premium", "Metro Connected"]
+    // },
+    {
+      id: 2,
+      name: "Noida",
+      area: "Sector 150 & Expressway",
+      description: "Modern planned city with excellent connectivity to Delhi and growing IT sector",
+      image: "/images/bilal-ahmad-_ua9kZBbjuw-unsplash.jpg",
+      properties: "1,800+",
+      avgPrice: "₹80L - ₹3.5Cr",
+      growth: "15%",
+      rating: 4.6,
+      tags: ["Planned City", "Expressway", "IT Hub"]
+    },
+    // {
+    //   id: 3,
+    //   name: "Delhi",
+    //   area: "South & Central Delhi",
+    //   description: "Prime locations with heritage properties and premium residential areas",
+    //   image: "https://images.unsplash.com/photo-1580651315530-69c8e0026374?w=600",
+    //   properties: "3,200+",
+    //   avgPrice: "₹2Cr - ₹20Cr+",
+    //   growth: "8%",
+    //   rating: 4.9,
+    //   tags: ["Prime Location", "Heritage", "Established"]
+    // },
+    {
+      id: 4,
+      name: "Greater Noida",
+      area: "Knowledge Park & Sports City",
+      description: "Affordable housing with future growth potential and educational institutions",
+      image: "/images/shantanu-goyal-nhR-ALn6x-o-unsplash.jpg",
+      properties: "1,200+",
+      avgPrice: "₹40L - ₹1.8Cr",
+      growth: "18%",
+      rating: 4.3,
+      tags: ["Affordable", "Growth Area", "Educational"]
+    },
+    // {
+    //   id: 5,
+    //   name: "Faridabad",
+    //   area: "Sector 21 & Greenfield",
+    //   description: "Industrial hub with affordable housing options and good connectivity",
+    //   image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600",
+    //   properties: "900+",
+    //   avgPrice: "₹35L - ₹1.5Cr",
+    //   growth: "10%",
+    //   rating: 4.2,
+    //   tags: ["Industrial", "Affordable", "Developing"]
+    // },
+    {
+      id: 6,
+      name: "Ghaziabad",
+      area: "Vaishali & Indirapuram",
+      description: "Rapidly developing area with excellent metro connectivity to Delhi",
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600",
+      properties: "1,100+",
+      avgPrice: "₹45L - ₹2Cr",
+      growth: "14%",
+      rating: 4.4,
+      tags: ["Metro Connected", "Developing", "Affordable"]
+    },
+    {
+      id: 6,
+      name: "Yamiuna Expressway",
+      area: "Vaishali & Indirapuram",
+      description: "Rapidly developing area with excellent metro connectivity to Delhi",
+      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600",
+      properties: "1,100+",
+      avgPrice: "₹45L - ₹2Cr",
+      growth: "14%",
+      rating: 4.4,
+      tags: ["Metro Connected", "Developing", "Affordable"]
+    }
+  ];
+  // 4th
+   const categories: Category[] = [
+    {
+      id: 1,
+      name: "Highrise",
+      description: "Luxurious top-floor apartments with premium features and panoramic views",
+      icon: ChartBarIcon,
+      image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600",
+      properties: "320+",
+      startingPrice: "₹4Cr",
+      growth: "14%",
+      tags: ["Premium", "Panoramic View", "Luxury"],
+      route: "/properties/penthouse",
+      stats: [
+        { label: "Avg. Size", value: "2500-6000 sqft" },
+        { label: "Rental Yield", value: "2.5-3.5%" }
+      ]
+    },
+    {
+      id: 2,
+      name: "Lowrise",
+      description: "Spacious farmhouses with large plots, perfect for weekend getaways",
+      icon: HomeModernIcon,
+      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600",
+      properties: "180+",
+      startingPrice: "₹1.5Cr",
+      growth: "25%",
+      tags: ["Spacious", "Garden", "Weekend"],
+      route: "/properties/farmhouse",
+      stats: [
+        { label: "Avg. Size", value: "1-5 acres" },
+        { label: "Appreciation", value: "18-22%" }
+      ]
+    },
+    {
+      id: 3,
+      name: "Residential Apartment",
+      description: "Modern apartments with amenities in prime locations across Delhi NCR",
+      icon: BuildingOfficeIcon,
+      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600",
+      properties: "5,200+",
+      startingPrice: "₹25L",
+      growth: "15%",
+      tags: ["2-4 BHK", "Gated Community", "Amenities"],
+      route: "/properties/residential-apartments",
+      stats: [
+        { label: "Avg. Size", value: "800-2000 sqft" },
+        { label: "Rental Yield", value: "3-4%" }
+      ]
+    },
+    {
+      id: 4,
+      name: "Commercial Space",
+      description: "Office spaces, retail shops, and commercial establishments for business",
+      icon: BuildingStorefrontIcon,
+      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600",
+      properties: "1,800+",
+      startingPrice: "₹50L",
+      growth: "18%",
+      tags: ["Office", "Retail", "IT Park"],
+      route: "/properties/commercial",
+      stats: [
+        { label: "Avg. Size", value: "500-5000 sqft" },
+        { label: "Rental Yield", value: "6-8%" }
+      ]
+    },
+    {
+      id: 5,
+      name: "Luxury Villas",
+      description: "Premium independent villas with private amenities and exclusive locations",
+      icon: HomeModernIcon,
+      image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600",
+      properties: "850+",
+      startingPrice: "₹2.5Cr",
+      growth: "12%",
+      tags: ["Private Pool", "Garden", "Premium"],
+      route: "/properties/luxury-villas",
+      stats: [
+        { label: "Avg. Size", value: "3000-8000 sqft" },
+        { label: "Rental Yield", value: "2-3%" }
+      ]
+    },
+    {
+      id: 6,
+      name: "Plots & Land",
+      description: "Residential and commercial plots for custom construction and investment",
+      icon: MapIcon,
+      image: "/images/land.jpg",
+      properties: "3,500+",
+      startingPrice: "₹15L",
+      growth: "22%",
+      tags: ["Residential", "Commercial", "Farmhouse"],
+      route: "/properties/plots",
+      stats: [
+        { label: "Avg. Size", value: "100-500 sqyd" },
+        { label: "Appreciation", value: "20-25%" }
+      ]
+    },
+    {
+      id: 7,
+      name: "Studio Apartment",
+      description: "Compact and affordable studio apartments perfect for singles and couples",
+      icon: BuildingLibraryIcon,
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600",
+      properties: "2,100+",
+      startingPrice: "₹18L",
+      growth: "20%",
+      tags: ["Compact", "Affordable", "Furnished"],
+      route: "/properties/studio",
+      stats: [
+        { label: "Avg. Size", value: "300-600 sqft" },
+        { label: "Rental Yield", value: "4-5%" }
+      ]
+    },
+    {
+      id: 8,
+      name: "Builder Floors",
+      description: "Independent floors in low-rise buildings with separate entries",
+      icon: ArrowsPointingOutIcon,
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600",
+      properties: "1,900+",
+      startingPrice: "₹75L",
+      growth: "16%",
+      tags: ["Independent", "2-3 Floors", "Privacy"],
+      route: "/properties/builder-floors",
+      stats: [
+        { label: "Avg. Size", value: "1200-2500 sqft" },
+        { label: "Rental Yield", value: "3-4%" }
+      ]
+    },
+    
+  ];
+  // 5th
+const features: Feature[] = [
+    {
+      id: 1,
+      title: "RERA Registered",
+      description: "All our projects and properties are registered with RERA, ensuring legal compliance and buyer protection under government regulations.",
+      icon: ShieldCheckIcon,
+      highlight: "Legal Protection",
+      badge: "Govt. Verified"
+    },
+    {
+      id: 2,
+      title: "Verified Property Listings",
+      description: "Every property undergoes thorough verification process including legal checks, document verification, and physical inspection.",
+      icon: CheckBadgeIcon,
+      highlight: "100% Authentic",
+      badge: "Quality Assured"
+    },
+    {
+      id: 3,
+      title: "0% Brokerage",
+      description: "Save on brokerage fees when you deal directly with us. No hidden charges or commission fees on selected properties.",
+      icon: NoSymbolIcon,
+      highlight: "Save Money",
+      badge: "Direct Deal"
+    },
+    {
+      id: 4,
+      title: "24/7 Customer Support",
+      description: "Our dedicated support team is available round the clock to assist you with queries, site visits, and documentation.",
+      icon: PhoneIcon,
+      highlight: "Always Available",
+      badge: "Instant Help"
+    },
+    {
+      id: 5,
+      title: "100% Transparency",
+      description: "Complete transparency in pricing, documentation, and processes. No hidden costs or surprise charges throughout your buying journey.",
+      icon: EyeIcon,
+      highlight: "No Hidden Costs",
+      badge: "Clear Pricing"
+    },
+    {
+      id: 6,
+      title: "Free Site Visit",
+      description: "Schedule complimentary site visits with our experts. Get personal guidance and on-site property evaluation at no extra cost.",
+      icon: MapPinIcon,
+      highlight: "Personal Guidance",
+      badge: "Expert Assisted"
+    }
+  ];
+
+  const stats = [
+    { number: "50,000+", label: "Happy Customers" },
+    { number: "15,000+", label: "Properties Verified" },
+    { number: "200+", label: "RERA Projects" },
+    { number: "4.9/5", label: "Customer Rating" }
+  ];
+  // 6th
+  const projects: Project[] = [
+    {
+      id: 1,
+      name: "Skyrise Towers",
+      builder: "Elite Builders",
+      location: "Sector 62, Gurugram",
+      price: "₹1.2Cr - ₹2.5Cr",
+      pricePerSqft: "₹12,500/sqft",
+      possessionDate: "Dec 2025",
+      launchDate: "New Launch",
+      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600",
+      unitTypes: ["2 BHK", "3 BHK", "4 BHK"],
+      offers: ["5% Early Bird Discount", "Free Modular Kitchen", "No GST"],
+      reraId: "HRERA-123456",
+      status: "new-launch",
+      rating: 4.8,
+      totalUnits: 200,
+      availableUnits: 45,
+      amenities: ["Swimming Pool", "Club House", "Gym", "Park"]
+    },
+    {
+      id: 2,
+      name: "Luxury Greens",
+      builder: "Premium Developers",
+      location: "Golf Course Road, Gurugram",
+      price: "₹2.5Cr - ₹5Cr",
+      pricePerSqft: "₹18,000/sqft",
+      possessionDate: "Mar 2026",
+      launchDate: "Last Week",
+      image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600",
+      unitTypes: ["3 BHK", "4 BHK", "Penthouse"],
+      offers: ["No Registration Charges", "Free Car Parking", "Zero Maintenance for 2 Years"],
+      reraId: "HRERA-789012",
+      status: "hot-selling",
+      rating: 4.9,
+      totalUnits: 150,
+      availableUnits: 12,
+      amenities: ["Private Pool", "Concierge", "Theater", "Spa"]
+    },
+    {
+      id: 3,
+      name: "Urban Nest",
+      builder: "Cityscape Builders",
+      location: "Sector 128, Noida",
+      price: "₹80L - ₹1.8Cr",
+      pricePerSqft: "₹9,800/sqft",
+      possessionDate: "Aug 2025",
+      launchDate: "2 Weeks Ago",
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600",
+      unitTypes: ["1 BHK", "2 BHK", "3 BHK"],
+      offers: ["10% Down Payment", "Easy Payment Plan", "Free Interior"],
+      reraId: "UPRERA-345678",
+      status: "hot-selling",
+      rating: 4.6,
+      totalUnits: 300,
+      availableUnits: 28,
+      amenities: ["Gym", "Play Area", "Security", "Park"]
+    },
+    {
+      id: 4,
+      name: "Riverfront Residences",
+      builder: "Nature Homes",
+      location: "Yamuna Expressway, Noida",
+      price: "₹1.5Cr - ₹3.2Cr",
+      pricePerSqft: "₹11,200/sqft",
+      possessionDate: "Jun 2026",
+      launchDate: "Just Launched",
+      image: "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600",
+      unitTypes: ["2 BHK", "3 BHK", "Garden Villa"],
+      offers: ["River Facing Premium", "Club Membership", "Smart Home Setup"],
+      reraId: "UPRERA-901234",
+      status: "new-launch",
+      rating: 4.7,
+      totalUnits: 180,
+      availableUnits: 62,
+      amenities: ["River View", "Boating", "Jogging Track", "Yoga Deck"]
+    },
+    // {
+    //   id: 5,
+    //   name: "Tech Park Residency",
+    //   builder: "Innovate Spaces",
+    //   location: "Cyber City, Gurugram",
+    //   price: "₹90L - ₹2.1Cr",
+    //   pricePerSqft: "₹10,500/sqft",
+    //   possessionDate: "Oct 2025",
+    //   launchDate: "1 Month Ago",
+    //   image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600",
+    //   unitTypes: ["Studio", "2 BHK", "3 BHK"],
+    //   offers: ["Waived Stamp Duty", "Co-working Space", "Tech Package"],
+    //   reraId: "HRERA-567890",
+    //   status: "almost-sold",
+    //   rating: 4.5,
+    //   totalUnits: 250,
+    //   availableUnits: 8,
+    //   amenities: ["Co-working", "Cafeteria", "Tech Lounge", "Fiber Internet"]
+    // },
+    // {
+    //   id: 6,
+    //   name: "Heritage Homes",
+    //   builder: "Classic Constructions",
+    //   location: "South Delhi",
+    //   price: "₹3Cr - ₹8Cr",
+    //   pricePerSqft: "₹25,000/sqft",
+    //   possessionDate: "Dec 2024",
+    //   launchDate: "Limited Units",
+    //   image: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=600",
+    //   unitTypes: ["3 BHK", "4 BHK", "Duplex"],
+    //   offers: ["Heritage Premium", "Customization", "Priority Location"],
+    //   reraId: "DLRERA-112233",
+    //   status: "hot-selling",
+    //   rating: 4.9,
+    //   totalUnits: 80,
+    //   availableUnits: 5,
+    //   amenities: ["Heritage Design", "Large Balcony", "Servant Quarter", "Parking"]
+    // }
+  ];
+
+  const getStatusBadge = (status: Project['status']) => {
+    const statusConfig = {
+      'new-launch': { label: 'New Launch', color: 'bg-green-500' },
+      'hot-selling': { label: 'Hot Selling', color: 'bg-red-500' },
+      'almost-sold': { label: 'Almost Sold', color: 'bg-orange-500' }
+    };
+    
+    const config = statusConfig[status];
+    return (
+      <span className={`${config.color} text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1`}>
+        {status === 'hot-selling' && <FireIconSolid className="h-3 w-3" />}
+        {config.label}
+      </span>
+    );
+  };
+
+  // 7th
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const testimonials: Testimonial[] = [
+    {
+      id: 1,
+      name: "Rajesh Kumar",
+      location: "Gurugram",
+      rating: 5,
+      review: "PropertyDeals helped me find my dream 3BHK in Sector 62. The entire process was seamless - from site visits to documentation. Their team ensured complete transparency and saved me from hidden costs that other brokers usually charge.",
+      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      property: "3 BHK Apartment in Elite Homes",
+      purchaseDate: "January 2024",
+      verified: true,
+      likes: 24,
+      tags: ["Transparent Process", "Great Support", "Timely Possession"]
+    },
+    {
+      id: 2,
+      name: "Priya Sharma",
+      location: "Noida",
+      rating: 5,
+      review: "As a first-time home buyer, I was quite nervous. But the team at PropertyDeals made it so easy! They explained every document, negotiated the best price, and even helped with home loan processing. Zero brokerage was the cherry on top!",
+      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      property: "2 BHK in Tech Park Residency",
+      purchaseDate: "December 2023",
+      verified: true,
+      likes: 31,
+      tags: ["First-time Buyer", "Loan Assistance", "Zero Brokerage"]
+    },
+    {
+      id: 3,
+      name: "Amit Patel",
+      location: "Delhi",
+      rating: 4,
+      review: "Excellent service! Found a perfect commercial space for my startup. The legal verification and document process was thorough. The site visits were well-organized and the team was always available for queries.",
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      property: "Commercial Space in Cyber Hub",
+      purchaseDate: "November 2023",
+      verified: true,
+      likes: 18,
+      tags: ["Commercial Property", "Legal Support", "Quick Process"]
+    },
+    {
+      id: 4,
+      name: "Sunita Mehta",
+      location: "Faridabad",
+      rating: 5,
+      review: "After dealing with multiple brokers, finally found PropertyDeals. Their verified listings saved me from fake properties. The free site visits and honest advice helped me choose the right property within my budget.",
+      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      property: "Builder Floor in Greenfield",
+      purchaseDate: "February 2024",
+      verified: true,
+      likes: 29,
+      tags: ["Verified Listings", "Budget Friendly", "Honest Advice"]
+    },
+    {
+      id: 5,
+      name: "Vikram Singh",
+      location: "Greater Noida",
+      rating: 5,
+      review: "The 24/7 support is real! I had queries at odd hours and always got immediate responses. The property recommendations were spot-on based on my requirements. Highly recommended for serious buyers.",
+      photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      property: "4 BHK Villa in Luxury Greens",
+      purchaseDate: "March 2024",
+      verified: true,
+      likes: 42,
+      tags: ["24/7 Support", "Personalized Service", "Quick Response"]
+    },
+    {
+      id: 6,
+      name: "Neha Gupta",
+      location: "Ghaziabad",
+      rating: 4,
+      review: "Great experience buying my studio apartment. The team helped me understand the payment plan and ensured all RERA guidelines were followed. The possession was handed over exactly as promised.",
+      photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+      property: "Studio Apartment in Urban Nest",
+      purchaseDate: "January 2024",
+      verified: true,
+      likes: 15,
+      tags: ["RERA Compliant", "On-time Possession", "Studio Apartment"]
+    }
+  ];
+
+  const stats1 = [
+    { number: "4.9/5", label: "Average Rating" },
+    { number: "2,500+", label: "Happy Customers" },
+    { number: "98%", label: "Satisfaction Rate" },
+    { number: "24/7", label: "Customer Support" }
+  ];
+
+  const renderStars = (rating: number) => {
+    return (
+      <div className="flex gap-1">
+        {[...Array(5)].map((_, index) => (
+          index < rating ? (
+            <StarIconSolid key={index} className="h-5 w-5 text-yellow-400" />
+          ) : (
+            <StarIcon key={index} className="h-5 w-5 text-gray-300" />
+          )
+        ))}
+      </div>
+    );
+  };
+  // 8th
+  const services: Service[] = [
+    {
+      id: 1,
+      title: "Buy Property",
+      description: "Find your dream home from verified listings with complete legal support and price transparency.",
+      icon: HomeModernIcon,
+      features: [
+        "Verified Property Listings",
+        "Legal Document Verification",
+        "Price Negotiation Support",
+        "Site Visits & Shortlisting",
+        "RERA Compliance Check",
+        "Post-purchase Support"
+      ],
+      price: "Zero Brokerage*",
+      duration: "15-30 Days",
+      popular: true,
+      cta: "Find Your Home",
+      route: "/services/buy",
+      stats: [
+        { value: "10,000+", label: "Properties" },
+        { value: "98%", label: "Satisfaction" }
+      ]
+    },
+    {
+      id: 2,
+      title: "Sell Property",
+      description: "Get the best price for your property with maximum visibility and expert negotiation support.",
+      icon: BuildingStorefrontIcon,
+      features: [
+        "Free Property Valuation",
+        "Professional Photography",
+        "Multi-platform Listing",
+        "Buyer Verification",
+        "Legal Documentation",
+        "Quick Deal Closure"
+      ],
+      price: "1% Commission",
+      duration: "30-45 Days",
+      cta: "Sell Now",
+      route: "/services/sell",
+      stats: [
+        { value: "45 Days", label: "Avg. Selling Time" },
+        { value: "15%", label: "Better Price" }
+      ]
+    },
+    {
+      id: 3,
+      title: "Rent Assistance",
+      description: "Hassle-free rental experience with tenant verification, documentation, and agreement support.",
+      icon: KeyIcon,
+      features: [
+        "Tenant Background Check",
+        "Rental Agreement Drafting",
+        "Property Listing",
+        "Rent Negotiation",
+        "Move-in Assistance",
+        "Maintenance Support"
+      ],
+      price: "Half Month Rent",
+      duration: "7-10 Days",
+      cta: "Rent Property",
+      route: "/services/rent",
+      stats: [
+        { value: "5,000+", label: "Rental Properties" },
+        { value: "24/7", label: "Support" }
+      ]
+    },
+    {
+      id: 4,
+      title: "Home Loan Assistance",
+      description: "Get the best home loan deals with lowest interest rates and quick approval from top banks.",
+      icon: BanknotesIcon,
+      features: [
+        "Best Interest Rates",
+        "Multiple Bank Options",
+        "Documentation Support",
+        "Quick Approval",
+        "EMI Planning",
+        "Pre-closure Guidance"
+      ],
+      price: "Free Service",
+      duration: "3-7 Days",
+      popular: true,
+      cta: "Apply for Loan",
+      route: "/services/loan",
+      stats: [
+        { value: "20+", label: "Bank Partners" },
+        { value: "95%", label: "Approval Rate" }
+      ]
+    },
+    {
+      id: 5,
+      title: "Interior Services",
+      description: "Transform your space with professional interior design and execution services.",
+      icon: PaintBrushIcon,
+      features: [
+        "Free Design Consultation",
+        "3D Visualization",
+        "Quality Material",
+        "Timely Execution",
+        "Budget Planning",
+        "Post-completion Support"
+      ],
+      price: "₹499/sqft",
+      duration: "30-60 Days",
+      cta: "Design My Home",
+      route: "/services/interior",
+      stats: [
+        { value: "500+", label: "Projects" },
+        { value: "4.8/5", label: "Rating" }
+      ]
+    },
+    {
+      id: 6,
+      title: "Property Management",
+      description: "Complete property management services for landlords and NRI property owners.",
+      icon: CogIcon,
+      features: [
+        "Rent Collection",
+        "Maintenance Management",
+        "Tenant Management",
+        "Property Inspection",
+        "Bill Payments",
+        "Monthly Reports"
+      ],
+      price: "8% Monthly Rent",
+      duration: "Ongoing",
+      cta: "Manage Property",
+      route: "/services/management",
+      stats: [
+        { value: "99%", label: "Rent Collection" },
+        { value: "1,200+", label: "Properties" }
+      ]
+    }
+  ];
+
+  const processSteps = [
+    {
+      step: "01",
+      title: "Consultation",
+      description: "Share your requirements and get expert advice",
+      icon: UserGroupIcon
+    },
+    {
+      step: "02",
+      title: "Customized Plan",
+      description: "Get a tailored plan based on your needs and budget",
+      icon: DocumentTextIcon
+    },
+    {
+      step: "03",
+      title: "Execution",
+      description: "We handle everything while you track progress",
+      icon: CogIcon
+    },
+    {
+      step: "04",
+      title: "Completion",
+      description: "Get delivery with complete documentation",
+      icon: ShieldCheckIcon
+    }
+  ];
+  // 9th
+  const companies = [
+  { id: 1, name: "DLF Realty", logo: "/images/M3M_logo.png" },
+  { id: 2, name: "Emaar India", logo: "/images/godrej.webp" },
+  { id: 3, name: "Prestige Group", logo: "/images/ATS_LOGO.png" },
+  { id: 4, name: "HDFC Bank", logo: "/images/sobha.png" },
+  { id: 5, name: "ICICI Bank", logo: "/images/unitech.png" },
+  { id: 6, name: "Godrej Properties", logo: "/images/Gaurslogo.png" }
+];
+  // 10th
+   const [formData, setFormData] = useState<FormData>({
+    name: '',
+    mobile: '',
+    email: '',
+    preferredLocation: '',
+    budget: '',
+    propertyType: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const locations1 = [
+    'Gurugram',
+    'Noida',
+    'Delhi',
+    'Greater Noida',
+    'Faridabad',
+    'Ghaziabad',
+    'Any Location'
+  ];
+
+  const budgets = [
+    'Under ₹50L',
+    '₹50L - ₹1Cr',
+    '₹1Cr - ₹2Cr',
+    '₹2Cr - ₹5Cr',
+    '₹5Cr+',
+    'Not Sure'
+  ];
+
+  const propertyTypes1 = [
+    'Residential Apartment',
+    'Commercial Space',
+    'Luxury Villa',
+    'Plot/Land',
+    'Studio Apartment',
+    'Builder Floor',
+    'Penthouse',
+    'Any Type'
+  ];
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+    
+  //   // Simulate API call
+  //   await new Promise(resolve => setTimeout(resolve, 2000));
+    
+  //   setIsSubmitting(false);
+  //   setIsSubmitted(true);
+    
+  //   // Reset form after success
+  //   setTimeout(() => {
+  //     setFormData({
+  //       name: '',
+  //       mobile: '',
+  //       email: '',
+  //       preferredLocation: '',
+  //       budget: '',
+  //       propertyType: '',
+  //       message: ''
+  //     });
+  //     setIsSubmitted(false);
+  //   }, 5000);
+  // };
+
+  const contactInfo = [
+    {
+      icon: PhoneIcon,
+      title: 'Call Us',
+      details: '+91 98765 43210',
+      subtitle: 'Mon-Sun, 8AM-10PM'
+    },
+    {
+      icon: EnvelopeIcon,
+      title: 'Email Us',
+      details: 'info@propertydeals.com',
+      subtitle: 'We reply within 2 hours'
+    },
+    {
+      icon: MapPinIcon,
+      title: 'Visit Office',
+      details: 'Connaught Place, Delhi',
+      subtitle: 'Get directions'
+    },
+    {
+      icon: ClockIcon,
+      title: 'Working Hours',
+      details: '24/7 Available',
+      subtitle: 'For site visits & support'
+    }
+  ];
+
+  const features1 = [
+    'Get personalized property recommendations',
+    'Best price guarantee',
+    'Zero brokerage on selected properties',
+    'Free site visits',
+    'Home loan assistance',
+    'Legal verification support'
+  ];
+
+  // 11th
+  const [openItems, setOpenItems] = useState<number[]>([1]);
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+
+  const faqs: FAQItem[] = [
+    {
+      id: 1,
+      question: "What areas in Delhi NCR do you cover?",
+      answer: "We cover all major areas in Delhi NCR including Gurugram (all sectors), Noida (all sectors), Greater Noida, Faridabad, Ghaziabad, and all prime locations in Delhi. Our team has extensive knowledge of both established and emerging localities across the National Capital Region.",
+      category: "general"
+    },
+    {
+      id: 2,
+      question: "Do you charge any brokerage fees?",
+      answer: "For buyers, we offer zero brokerage on most properties. For sellers, we charge a nominal 1% commission only after successful deal closure, which is significantly lower than the standard 2% market rate. There are no hidden charges or upfront fees.",
+      category: "buying"
+    },
+    {
+      id: 3,
+      question: "How do you verify property documents?",
+      answer: "We have a dedicated legal team that verifies all property documents including title deeds, encumbrance certificates, RERA registration, building approvals, and tax receipts. We also conduct physical site verification and ensure all documents are legally vetted before listing.",
+      category: "legal"
+    },
+    {
+      id: 4,
+      question: "What is the typical process for buying a property through you?",
+      answer: "Our process is simple: 1) Free consultation to understand your requirements 2) Shortlisted property recommendations 3) Site visits 4) Price negotiation 5) Legal verification 6) Documentation & registration 7) Post-sales support. The entire process usually takes 15-30 days.",
+      category: "buying"
+    },
+    {
+      id: 5,
+      question: "Do you provide home loan assistance?",
+      answer: "Yes, we have tie-ups with 20+ leading banks and NBFCs including HDFC, SBI, ICICI, and Axis Bank. Our loan experts help you get the best interest rates, quick approvals, and handle all documentation. This service is completely free for our customers.",
+      category: "general"
+    },
+    {
+      id: 6,
+      question: "Can you help with property valuation for selling?",
+      answer: "Absolutely! We provide free property valuation services considering factors like location, amenities, market trends, and recent transactions in your area. Our valuation report helps you set the right price and get the best value for your property.",
+      category: "selling"
+    }
+  ];
+
+  const categories1 = [
+    { id: 'all', name: 'All Questions', count: faqs.length },
+    { id: 'general', name: 'General', count: faqs.filter(f => f.category === 'general').length },
+    { id: 'buying', name: 'Buying', count: faqs.filter(f => f.category === 'buying').length },
+    { id: 'selling', name: 'Selling', count: faqs.filter(f => f.category === 'selling').length },
+    { id: 'legal', name: 'Legal', count: faqs.filter(f => f.category === 'legal').length }
+  ];
+
+  const toggleItem = (id: number) => {
+    setOpenItems(prev =>
+      prev.includes(id)
+        ? prev.filter(item => item !== id)
+        : [...prev, id]
+    );
+  };
+
+  const filteredFaqs = activeCategory === 'all' 
+    ? faqs 
+    : faqs.filter(faq => faq.category === activeCategory);
+
+
+    // enquery form
+    const [isRtl, setIsRtl] = useState(false);
+
+  const toggleDirection = () => {
+    setIsRtl(!isRtl);
+  };
+      const projects2 = [
+    {
+      id: 1,
+      title: "Skyline Residences",
+      location: "Rohini Sector 7, Delhi",
+      price: "₹2.5 Cr",
+      area: "1800 sq.ft.",
+      image: "/project1.jpg",
+      status: "Pre Launch"
+    },
+    {
+      id: 2,
+      title: "Luxuria Greens",
+      location: "Dilshad Garden, Delhi",
+      price: "₹1.8 Cr",
+      area: "1500 sq.ft.",
+      image: "/project2.jpg",
+      status: "Pre Launch"
+    },
+    {
+      id: 3,
+      title: "Skyline Residences",
+      location: "Rohini Sector 7, Delhi",
+      price: "₹2.5 Cr",
+      area: "1800 sq.ft.",
+      image: "/project1.jpg",
+      status: "Pre Launch"
+    },
+    {
+      id: 4,
+      title: "Luxuria Greens",
+      location: "Dilshad Garden, Delhi",
+      price: "₹1.8 Cr",
+      area: "1500 sq.ft.",
+      image: "/project2.jpg",
+      status: "Pre Launch"
+    },
+    {
+      id: 5,
+      title: "Skyline Residences",
+      location: "Rohini Sector 7, Delhi",
+      price: "₹2.5 Cr",
+      area: "1800 sq.ft.",
+      image: "/project1.jpg",
+      status: "Pre Launch"
+    },
+    {
+      id: 2,
+      title: "Luxuria Greens",
+      location: "Dilshad Garden, Delhi",
+      price: "₹1.8 Cr",
+      area: "1500 sq.ft.",
+      image: "/project2.jpg",
+      status: "Pre Launch"
+    },
+    // Add more projects...
+  ];
+
+  return (
+    <>
+    {/* 1st */}
+       <section className="relative min-h-[75vh] bg-gray-900 overflow-hidden">
+
+      {/* Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2070&q=80)",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 flex items-center min-h-[75vh]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="max-w-3xl">
+
+            {/* Badge */}
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2">
+              <HomeModernIcon className="h-5 w-5 text-cyan-400" />
+              <span className="text-sm text-white">
+                Trusted by 10,000+ Buyers
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
+              Find Your
+              <span className="block text-cyan-400">
+                Dream Home
+              </span>
+            </h1>
+
+            <p className="text-gray-300 max-w-xl mb-6">
+              Buy premium properties with verified listings and expert guidance.
+            </p>
+
+            {/* FORM (SOLID WHITE) */}
+           <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-5">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+
+    {/* Full Name */}
+    <div className="flex flex-col gap-1">
+      <label className="text-sm font-medium text-gray-700">
+        Full Name
+      </label>
+      <input
+        type="text"
+        placeholder="Enter your name"
+        className="input-style"
+      />
+    </div>
+
+    {/* Mobile Number */}
+    <div className="flex flex-col gap-1">
+      <label className="text-sm font-medium text-gray-700">
+        Mobile Number
+      </label>
+      <input
+        type="tel"
+        placeholder="Enter mobile number"
+        className="input-style"
+      />
+    </div>
+
+    {/* Property Type */}
+    <div className="flex flex-col gap-1">
+      <label className="text-sm font-medium text-gray-700">
+        Property Type
+      </label>
+      <select className="input-style">
+        <option>Select type</option>
+        <option>Apartment</option>
+        <option>Villa</option>
+        <option>Plot</option>
+      </select>
+    </div>
+
+    {/* Budget */}
+    <div className="flex flex-col gap-1">
+      <label className="text-sm font-medium text-gray-700">
+        Budget
+      </label>
+      <select className="input-style">
+        <option>Select budget</option>
+        <option>₹20L - ₹50L</option>
+        <option>₹50L - ₹1Cr</option>
+        <option>₹1Cr+</option>
+      </select>
+    </div>
+
+    {/* Button */}
+    <div className="flex flex-col justify-end">
+      <button className="w-full flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white hover:shadow-lg">
+        <MagnifyingGlassIcon className="h-5 w-5" />
+        Search
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+    {/* //  end of 1st */}
+     {/* <section className="py-8 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">Pre Launch Projects</h2>
+        
+        <div
+          className={`overflow-x-auto ${isRtl ? 'rtl' : ''}`} 
+          style={{ direction: isRtl ? 'rtl' : 'ltr' }} 
+        >
+          <div className="flex gap-4">
+            {projects2.map((project) => (
+              <div key={project.id} className="bg-white rounded-lg p-4 shadow-sm border">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 overflow-hidden">
+                      <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
+                        <span className="text-xs text-gray-500">Img</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between">
+                      <h3 className="font-semibold text-gray-800 text-sm truncate">
+                        {project.title}
+                      </h3>
+                      <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
+                        {project.status}
+                      </span>
+                    </div>
+                    
+                    <p className="text-gray-500 text-xs mt-1 truncate">
+                      <i className="fas fa-map-marker-alt mr-1"></i>
+                      {project.location}
+                    </p>
+                    
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-green-600 font-bold text-sm">
+                        {project.price}
+                      </span>
+                      <span className="text-blue-600 text-xs font-medium">
+                        {project.area}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section> */}
+   
+    {/* 2nd */}
+    <section className="py-18 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-blue-600 uppercase tracking-wide">
+                    Top highlighted projects
+                  </span>
+                </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Featured Properties in <span className="text-blue-600">Delhi NCR</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Discover premium residential properties across Delhi, Gurugram, Noida, and Faridabad
+          </p>
+        </div>
+
+        {/* Properties Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {properties.map((property) => (
+            <div
+              key={property.id}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+            >
+              {/* Property Image */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={property.image}
+                  alt={property.title}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                
+                {/* Featured Badge */}
+                {property.featured && (
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      Featured
+                    </span>
+                  </div>
+                )}
+
+                {/* Favorite Button */}
+                <button
+                  onClick={() => toggleFavorite(property.id)}
+                  className="absolute top-4 right-4 p-2 bg-white/90 rounded-full hover:bg-white transition-colors"
+                >
+                  {favorites.includes(property.id) ? (
+                    <HeartIconSolid className="h-6 w-6 text-red-500" />
+                  ) : (
+                    <HeartIcon className="h-6 w-6 text-gray-600" />
+                  )}
+                </button>
+
+                {/* Price Overlay */}
+                <div className="absolute bottom-4 left-4">
+                  <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2">
+                    <div className="text-xl font-bold text-gray-900">{property.price}</div>
+                    <div className="text-sm text-gray-600">{property.pricePerSqft}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Property Details */}
+              <div className="p-6">
+                {/* Title and Location */}
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
+                  {property.title}
+                </h3>
+                <div className="flex items-center text-gray-600 mb-4">
+                  <MapPinIcon className="h-4 w-4 mr-1" />
+                  <span className="text-sm">{property.location}</span>
+                </div>
+
+                {/* Property Specifications */}
+                <div className="flex items-center justify-between mb-4 py-3 border-y border-gray-100">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <HomeModernIcon className="h-4 w-4 mr-1" />
+                    <span>{property.bedrooms} Beds</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <FaBath className="h-4 w-4 mr-1" />
+                    <span>{property.bathrooms} Baths</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <ArrowsPointingOutIcon className="h-4 w-4 mr-1" />
+                    <span>{property.sqft}</span>
+                  </div>
+                </div>
+
+                {/* Amenities */}
+                {/* <div className="mb-6">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-2">Key Amenities</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {property.amenities.slice(0, 3).map((amenity, index) => (
+                      <span
+                        key={index}
+                        className="inline-block bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full"
+                      >
+                        {amenity}
+                      </span>
+                    ))}
+                    {property.amenities.length > 3 && (
+                      <span className="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
+                        +{property.amenities.length - 3} more
+                      </span>
+                    )}
+                  </div>
+                </div> */}
+
+                {/* CTA Buttons */}
+                <div className="flex gap-3">
+                  <button className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center">
+                    View Details
+                  </button>
+                  <button className="px-4 py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                    Contact
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <button className="bg-white text-blue-600 border border-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            View All Properties in Delhi NCR
+          </button>
+        </div>
+      </div>
+    </section>
+    <Prelaunch_section />
+    {/* Search Form */}
+           <div className="rounded-2xl bg-white/10 p-1 backdrop-blur-sm max-w-screen-lg mx-auto">
+  {/* Message Block */}
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      Get the List of <span className="text-blue-600">Top Properties in Noida</span>
+    </h2>
+    <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+      Send enquiry, and we'll send you contact details in seconds for free.
+    </p>
+  </div>
+
+  <div className="rounded-2xl bg-white/10 p-1 backdrop-blur-sm">
+  <div className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-2xl lg:flex-row lg:items-end">
+
+    {/* Name */}
+    <div className="flex-1">
+      <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
+        Full Name
+      </label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter your name"
+        // value={name}
+        // onChange={(e) => setName(e.target.value)}
+        className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    {/* Mobile Number */}
+    <div className="flex-1">
+      <label htmlFor="mobile" className="mb-2 block text-sm font-medium text-gray-700">
+        Mobile Number
+      </label>
+      <input
+        type="tel"
+        id="mobile"
+        placeholder="Enter mobile number"
+        // value={mobile}
+        // onChange={(e) => setMobile(e.target.value)}
+        className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    {/* Property Type */}
+    <div className="flex-1">
+      <label htmlFor="property-type" className="mb-2 block text-sm font-medium text-gray-700">
+        Property Type
+      </label>
+      <select
+        id="property-type"
+        value={propertyType}
+        onChange={(e) => setPropertyType(e.target.value)}
+        className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="">Select Property</option>
+        {propertyTypes.map((type) => (
+          <option key={type.value} value={type.value}>
+            {type.label}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    {/* Price Range */}
+    <div className="flex-1">
+      <label htmlFor="price-range" className="mb-2 block text-sm font-medium text-gray-700">
+        Price Range
+      </label>
+      <select
+        id="price-range"
+        value={priceRange}
+        onChange={(e) => setPriceRange(e.target.value)}
+        className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="">Select Budget</option>
+        {priceRanges.map((range) => (
+          <option key={range.value} value={range.value}>
+            {range.label}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    {/* Search Button */}
+    <div>
+      <button
+        type="button"
+        // onClick={handleSearch}
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 font-semibold text-white transition-all hover:from-cyan-600 hover:to-blue-700 hover:shadow-lg lg:w-auto"
+      >
+        <MagnifyingGlassIcon className="h-5 w-5" />
+        Search
+      </button>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+
+    {/* 3rd */}
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-blue-600 uppercase tracking-wide">
+                    Our Popular Locations
+                  </span>
+                </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Popular Locations in <span className="text-blue-600">Delhi NCR</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Explore premium residential areas across the National Capital Region with high growth potential
+          </p>
+        </div>
+
+        {/* Locations Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {locations.map((location) => (
+            <Link 
+              key={location.id} 
+              href={`/locations/${location.name.toLowerCase().replace(' ', '-')}`}
+              className="group"
+            >
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:scale-105 h-full flex flex-col">
+                {/* Location Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={location.image}
+                    alt={location.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  
+                  {/* Location Name */}
+                  <div className="absolute bottom-4 left-4">
+                    <h3 className="text-2xl font-bold text-white mb-1">
+                      {location.name}
+                    </h3>
+                    <div className="flex items-center text-white/90">
+                      <MapPinIcon className="h-4 w-4 mr-1" />
+                      <span className="text-sm">{location.area}</span>
+                    </div>
+                  </div>
+
+                  {/* Rating Badge */}
+                  <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center">
+                    <StarIcon className="h-4 w-4 text-yellow-500 mr-1" />
+                    <span className="text-sm font-semibold text-gray-900">{location.rating}</span>
+                  </div>
+                </div>
+
+                {/* Location Details */}
+                <div className="p-6 flex-1 flex flex-col">
+                  {/* Description */}
+                  <p className="text-gray-600 mb-4 line-clamp-2 flex-1">
+                    {location.description}
+                  </p>
+
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div className="text-center">
+                      <div className="flex items-center justify-center text-gray-600 mb-1">
+                        <HomeModernIcon className="h-4 w-4 mr-1" />
+                        <span className="text-xs">Properties</span>
+                      </div>
+                      <div className="font-semibold text-gray-900">{location.properties}</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex items-center justify-center text-gray-600 mb-1">
+                        <ArrowUpIcon className="h-4 w-4 mr-1" />
+                        <span className="text-xs">Growth</span>
+                      </div>
+                      <div className="font-semibold text-green-600">{location.growth}</div>
+                    </div>
+                  </div>
+
+                  {/* Price Range */}
+                  <div className="mb-4 p-3 bg-blue-50 rounded-lg">
+                    <div className="text-xs text-blue-600 font-medium mb-1">Average Price Range</div>
+                    <div className="text-lg font-bold text-blue-700">{location.avgPrice}</div>
+                  </div>
+
+                  {/* Tags */}
+                  {/* <div className="flex flex-wrap gap-2 mt-auto">
+                    {location.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div> */}
+                </div>
+
+                {/* CTA Overlay */}
+                <div className="px-6 pb-6">
+                  <div className="w-full bg-blue-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors group-hover:shadow-lg">
+                    Explore Properties
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        {/* <div className="text-center mt-12">
+          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Not Sure Which Location is Right for You?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Our property experts will help you find the perfect location based on your budget, lifestyle, and preferences.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Talk to Property Expert
+              </button>
+              <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                Compare Locations
+              </button>
+            </div>
+          </div>
+        </div> */}
+      </div>
+    </section>
+    {/* 4th */}
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-blue-600 uppercase tracking-wide">
+                     Categorys
+                  </span>
+                </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Explore Property by <span className="text-blue-600">Category</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Discover the perfect property type that matches your lifestyle and investment goals
+          </p>
+        </div>
+
+        {/* Categories Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {categories.map((category) => {
+            const IconComponent = category.icon;
+            return (
+              <Link 
+                key={category.id} 
+                href={category.route}
+                className="group"
+              >
+                <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:scale-105 h-full flex flex-col border border-gray-100">
+                  {/* Category Image */}
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    
+                    {/* Icon Badge */}
+                    <div className="absolute top-4 left-4">
+                      <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2">
+                        <IconComponent className="h-6 w-6 text-white" />
+                      </div>
+                    </div>
+
+                    {/* Properties Count */}
+                    <div className="absolute top-4 right-4">
+                      <div className="bg-black/50 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
+                        {category.properties}
+                      </div>
+                    </div>
+
+                    {/* Category Name */}
+                    <div className="absolute bottom-4 left-4">
+                      <h3 className="text-lg font-bold text-white">
+                        {category.name}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Category Details */}
+                  <div className="p-4 flex-1 flex flex-col">
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2 flex-1">
+                      {category.description}
+                    </p>
+
+                    {/* Stats */}
+                    <div className="grid grid-cols-2 gap-2 mb-3">
+                      {category.stats.map((stat, index) => (
+                        <div key={index} className="text-center">
+                          <div className="text-xs text-gray-500">{stat.label}</div>
+                          <div className="text-sm font-semibold text-gray-900">{stat.value}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Price and Growth */}
+                    <div className="flex justify-between items-center mb-3 p-2 bg-blue-50 rounded-lg">
+                      <div>
+                        <div className="text-xs text-blue-600">Starting from</div>
+                        <div className="text-sm font-bold text-blue-700">{category.startingPrice}</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-xs text-green-600">Growth</div>
+                        <div className="text-sm font-bold text-green-700">↑{category.growth}</div>
+                      </div>
+                    </div>
+
+                    {/* Tags */}
+                    {/* <div className="flex flex-wrap gap-1 mt-auto">
+                      {category.tags.slice(0, 2).map((tag, index) => (
+                        <span
+                          key={index}
+                          className="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {category.tags.length > 2 && (
+                        <span className="inline-block bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full">
+                          +{category.tags.length - 2}
+                        </span>
+                      )}
+                    </div> */}
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="px-4 pb-4">
+                    <div className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-center py-2 rounded-lg font-semibold text-sm hover:from-blue-700 hover:to-cyan-700 transition-colors group-hover:shadow-lg">
+                      Explore {category.properties.split('+')[0]}+ Properties
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-12">
+          <div className="bg-white rounded-2xl p-8 max-w-4xl mx-auto shadow-lg border border-gray-100">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Need Help Choosing the Right Property Type?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Our property consultants will guide you to the perfect category based on your budget, requirements, and investment goals.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center">
+                <CurrencyRupeeIcon className="h-5 w-5 mr-2" />
+                Get Investment Advice
+              </button>
+              <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                Compare Categories
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {/* 5th */}
+     <section className="py-16 bg-gradient-to-br from-blue-50 to-cyan-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm mb-4">
+            <StarIcon className="h-5 w-5 text-yellow-500" />
+            <span className="text-sm font-semibold text-gray-700">Trusted by 50,000+ Customers</span>
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Why Choose <span className="text-blue-600">PropertyDeals</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            We are committed to making your property journey seamless, transparent, and successful with our customer-first approach.
+          </p>
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+              <div className="text-3xl font-bold text-blue-600 mb-2">{stat.number}</div>
+              <div className="text-gray-600 font-medium">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature) => {
+            const IconComponent = feature.icon;
+            return (
+              <div 
+                key={feature.id}
+                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200"
+              >
+                {/* Badge */}
+                {feature.badge && (
+                  <div className="absolute -top-3 left-6">
+                    <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      {feature.badge}
+                    </span>
+                  </div>
+                )}
+
+                {/* Icon Container */}
+                <div className="mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  
+                  {/* Highlight */}
+                  {feature.highlight && (
+                    <div className="flex items-center text-sm text-blue-600 font-semibold">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-2"></div>
+                      {feature.highlight}
+                    </div>
+                  )}
+                </div>
+
+                {/* Hover Effect Border */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-blue-200 transition-colors duration-300 pointer-events-none"></div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA Section */}
+        <div className="mt-16 bg-white rounded-3xl shadow-xl overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Left Content */}
+            <div className="p-8 lg:p-12">
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                Ready to Find Your Dream Property?
+              </h3>
+              <p className="text-gray-600 mb-6 text-lg">
+                Experience the difference with our customer-centric approach. Get expert guidance every step of the way.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center text-gray-700">
+                  <UserGroupIcon className="h-5 w-5 text-green-500 mr-3" />
+                  <span>Dedicated Relationship Manager</span>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <BuildingLibraryIcon className="h-5 w-5 text-green-500 mr-3" />
+                  <span>Legal & Documentation Support</span>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <ClockIcon className="h-5 w-5 text-green-500 mr-3" />
+                  <span>Quick Loan Processing Assistance</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center">
+                  <PhoneIcon className="h-5 w-5 mr-2" />
+                  Book Free Consultation
+                </button>
+                <button className="border border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                  Download Brochure
+                </button>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center p-8 lg:p-12">
+              <div className="text-center text-white">
+                <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-8 inline-block">
+                  <UserGroupIcon className="h-16 w-16 text-white mx-auto mb-4" />
+                  <h4 className="text-2xl font-bold mb-2">Expert Team</h4>
+                  <p className="text-blue-100">
+                    Get personalized assistance from our property experts
+                  </p>
+                </div>
+                
+                <div className="mt-6 flex items-center justify-center space-x-4 text-sm">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                    <span>Online Support</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                    <span>On-site Assistance</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Trust Badges */}
+        <div className="mt-12 text-center">
+          <p className="text-gray-600 mb-6 font-medium">Trusted and Recognized By</p>
+          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+            <div className="bg-white rounded-lg px-6 py-3 shadow-sm">
+              <span className="text-gray-700 font-semibold">RERA</span>
+            </div>
+            <div className="bg-white rounded-lg px-6 py-3 shadow-sm">
+              <span className="text-gray-700 font-semibold">CREDAI</span>
+            </div>
+            <div className="bg-white rounded-lg px-6 py-3 shadow-sm">
+              <span className="text-gray-700 font-semibold">NABARD</span>
+            </div>
+            <div className="bg-white rounded-lg px-6 py-3 shadow-sm">
+              <span className="text-gray-700 font-semibold">ISO 9001:2015</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {/* 6th */}
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full px-4 py-2 mb-4">
+            <FireIconSolid className="h-5 w-5" />
+            <span className="text-sm font-semibold">Hot & New Projects</span>
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Latest <span className="text-blue-600">Projects & New Launches</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Discover freshly launched properties with exclusive pre-booking offers and early bird discounts
+          </p>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100"
+            >
+              {/* Project Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                
+                {/* Status Badge */}
+                <div className="absolute top-4 left-4">
+                  {getStatusBadge(project.status)}
+                </div>
+
+                {/* Available Units */}
+                <div className="absolute top-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded-full">
+                  {project.availableUnits}/{project.totalUnits} Units Left
+                </div>
+
+                {/* Price Overlay */}
+                <div className="absolute bottom-4 left-4">
+                  <div className="text-2xl font-bold text-white">{project.price}</div>
+                  <div className="text-white/90 text-sm">{project.pricePerSqft}</div>
+                </div>
+
+                {/* Rating */}
+                <div className="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center">
+                  <StarIcon className="h-4 w-4 text-yellow-400 mr-1" />
+                  <span className="text-white text-sm font-semibold">{project.rating}</span>
+                </div>
+              </div>
+
+              {/* Project Details */}
+              <div className="p-6">
+                {/* Project Name and Builder */}
+                <div className="mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 mb-1 line-clamp-1">
+                    {project.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm">by {project.builder}</p>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-center text-gray-600 mb-4">
+                  <MapPinIcon className="h-4 w-4 mr-2" />
+                  <span className="text-sm">{project.location}</span>
+                </div>
+
+                {/* Key Details Grid */}
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <CalendarIcon className="h-4 w-4 mr-2" />
+                    <div>
+                      <div className="text-xs text-gray-500">Possession</div>
+                      <div className="font-semibold text-gray-900">{project.possessionDate}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <ClockIcon className="h-4 w-4 mr-2" />
+                    <div>
+                      <div className="text-xs text-gray-500">Launch</div>
+                      <div className="font-semibold text-gray-900">{project.launchDate}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Unit Types */}
+                <div className="mb-4">
+                  <div className="text-xs text-gray-500 mb-2">Unit Types</div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.unitTypes.map((type, index) => (
+                      <span
+                        key={index}
+                        className="bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full font-medium"
+                      >
+                        {type}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Special Offers */}
+                <div className="mb-6">
+                  <div className="flex items-center text-sm font-semibold text-green-600 mb-2">
+                    <TagIcon className="h-4 w-4 mr-2" />
+                    Special Offers
+                  </div>
+                  <div className="space-y-2">
+                    {project.offers.slice(0, 2).map((offer, index) => (
+                      <div key={index} className="flex items-start text-sm">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></div>
+                        <span className="text-gray-700">{offer}</span>
+                      </div>
+                    ))}
+                    {project.offers.length > 2 && (
+                      <div className="text-xs text-gray-500">
+                        +{project.offers.length - 2} more offers
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* RERA ID */}
+                <div className="flex items-center justify-between mb-4 pt-4 border-t border-gray-100">
+                  <div className="flex items-center text-xs text-gray-500">
+                    <ShieldCheckIcon className="h-4 w-4 mr-1" />
+                    RERA: {project.reraId}
+                  </div>
+                  <div className={`text-xs font-semibold ${
+                    project.availableUnits < 20 ? 'text-red-600' : 'text-green-600'
+                  }`}>
+                    {project.availableUnits < 20 ? 'Selling Fast!' : 'Available'}
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex gap-3">
+                  <button className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center">
+                    Book Site Visit
+                  </button>
+                  <button className="px-4 py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                    Brochure
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        {/* <div className="text-center mt-12">
+          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-8 text-white">
+            <h3 className="text-2xl font-bold mb-4">
+              Get First Access to New Launches
+            </h3>
+            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+              Be the first to know about upcoming projects and get exclusive pre-booking benefits
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+              />
+              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap">
+                Get Early Access
+              </button>
+            </div>
+          </div>
+        </div> */}
+      </div>
+    </section>
+    {/* 7th */}
+   <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="container mx-auto px-4">
+
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm mb-4">
+            <HandThumbUpIcon className="h-5 w-5 text-green-500" />
+            <span className="text-sm font-semibold text-gray-700">
+              Trusted by 2,500+ Customers
+            </span>
+          </div>
+
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            What Our <span className="text-blue-600">Customers Say</span>
+          </h2>
+
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Real reviews from people who found their dream property with us.
+          </p>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          {stats1.map((stat, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-xl p-6 text-center shadow-md"
+            >
+              <div className="text-3xl font-bold text-blue-600">
+                {stat.number}
+              </div>
+              <div className="text-gray-600">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* 🔥 SLIDER */}
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          spaceBetween={24}
+          autoplay={{ delay: 3500, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {testimonials.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+
+                <FaQuoteLeft className="h-8 w-8 text-blue-100 mb-4" />
+
+                <p className="text-gray-700 leading-relaxed mb-6 line-clamp-4">
+                  "{item.review}"
+                </p>
+
+                <div className="flex items-center gap-4">
+                  <img
+                    src={item.photo}
+                    alt={item.name}
+                    className="w-14 h-14 rounded-full object-cover border-2 border-blue-100"
+                  />
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-semibold text-gray-900">
+                        {item.name}
+                      </h4>
+                      {item.verified && (
+                        <CheckBadgeIcon className="h-4 w-4 text-blue-500" />
+                      )}
+                    </div>
+                    <p className="text-sm text-gray-500">
+                      {item.location}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+      </div>
+    </section>
+    {/* 8th */}
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 rounded-full px-4 py-2 mb-4">
+            <CogIcon className="h-5 w-5" />
+            <span className="text-sm font-semibold">Complete Real Estate Solutions</span>
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Our <span className="text-blue-600">Services</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            End-to-end real estate services to meet all your property needs - from buying to management
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service) => {
+            const IconComponent = service.icon;
+            return (
+              <div
+                key={service.id}
+                className={`relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border-2 ${
+                  service.popular ? 'border-blue-500' : 'border-gray-100'
+                }`}
+              >
+                {/* Popular Badge */}
+                {service.popular && (
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+
+                <div className="p-6">
+                  {/* Icon and Title */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl group-hover:bg-blue-600 transition-colors">
+                      <IconComponent className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mt-1">
+                        <span className="flex items-center gap-1">
+                          <ClockIcon className="h-4 w-4" />
+                          {service.duration}
+                        </span>
+                        <span className="text-green-600 font-semibold">{service.price}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="space-y-3 mb-6">
+                    {service.features.slice(0, 3).map((feature, index) => (
+                      <div key={index} className="flex items-center text-sm text-gray-700">
+                        <CheckCircleIcon className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
+                        {feature}
+                      </div>
+                    ))}
+                    {service.features.length > 3 && (
+                      <div className="text-sm text-blue-600 font-medium">
+                        +{service.features.length - 3} more features
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Stats */}
+                  <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
+                    {service.stats.map((stat, index) => (
+                      <div key={index} className="text-center">
+                        <div className="text-lg font-bold text-gray-900">{stat.value}</div>
+                        <div className="text-xs text-gray-600">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA Button */}
+                  <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center group/btn">
+                    {service.cta}
+                    <ArrowRightIcon className="h-4 w-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Process Section */}
+        <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 lg:p-12 text-white mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold mb-4">How Our Service Works</h3>
+            <p className="text-blue-100 text-lg max-w-2xl mx-auto">
+              Simple 4-step process to get your real estate needs fulfilled efficiently
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {processSteps.map((step, index) => {
+              const StepIcon = step.icon;
+              return (
+                <div key={index} className="text-center group">
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto group-hover:bg-white/30 transition-colors">
+                      <StepIcon className="h-8 w-8 text-white" />
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                      <span className="text-sm font-bold text-gray-900">{step.step}</span>
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-bold mb-3">{step.title}</h4>
+                  <p className="text-blue-100 leading-relaxed">{step.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        {/* <div className="text-center">
+          <div className="bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Need Multiple Services?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Get special package deals when you combine multiple services. Save up to 25% on bundled services.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center">
+                <UserGroupIcon className="h-5 w-5 mr-2" />
+                Get Custom Package
+              </button>
+              <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                Download Service Catalog
+              </button>
+            </div>
+          </div>
+        </div> */}
+      </div>
+    </section>
+    {/* 9th */}
+     <section className="py-13 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4">
+
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <p className="text-blue-600 font-semibold text-sm mb-2">
+            Trusted by Industry Leaders
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Our <span className="text-blue-600">Premium Partners</span>
+          </h2>
+          <p className="text-gray-600 mt-3 max-w-xl mx-auto">
+            We collaborate with the most reputable brands to deliver top-quality service and experience.
+          </p>
+        </div>
+
+        {/* Logo Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {companies.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-blue-300 transition-all duration-300 flex items-center justify-center group"
+            >
+              <Image
+                src={item.logo}
+                alt={item.name}
+                width={120}
+                height={60}
+                className="object-contain "
+              />
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+    {/* 10th */}
+    <section
+  id="contact"
+  className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900"
+>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+
+      {/* LEFT CONTENT */}
+      <div className="text-white">
+
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 backdrop-blur">
+          <BuildingOfficeIcon className="h-4 w-4 sm:h-5 sm:w-5 text-blue-300" />
+          <span className="text-xs sm:text-sm font-semibold text-blue-200">
+            Get Expert Assistance
+          </span>
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3">
+          Get Best Property Deals in{" "}
+          <span className="text-blue-400">Delhi NCR</span>
+        </h2>
+
+        <p className="text-sm sm:text-base lg:text-lg text-blue-100 mb-6">
+          Connect with verified property experts and receive personalized
+          property recommendations based on your budget and preferences.
+        </p>
+
+        {/* FEATURES */}
+        <div className="mb-8">
+          <h3 className="text-lg sm:text-xl font-semibold mb-4">
+            Why Contact Us?
+          </h3>
+
+          <div className="space-y-3">
+            {features1.map((feature, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <CheckCircleIcon className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-sm sm:text-base text-blue-100">
+                  {feature}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CONTACT INFO */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {contactInfo.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={index}
+                className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 bg-blue-600 rounded-lg">
+                    <Icon className="h-4 w-4 text-white" />
+                  </div>
+                  <h4 className="text-sm sm:text-base font-semibold">
+                    {item.title}
+                  </h4>
+                </div>
+                <p className="text-sm sm:text-lg font-medium text-blue-100">
+                  {item.details}
+                </p>
+                <p className="text-xs sm:text-sm text-blue-200 mt-1">
+                  {item.subtitle}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* STATS */}
+        <div className="mt-6 grid grid-cols-3 gap-3">
+          {[
+            { value: "50K+", label: "Happy Clients" },
+            { value: "15K+", label: "Listings" },
+            { value: "24/7", label: "Support" },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              className="bg-white/5 border border-white/10 rounded-lg p-3 text-center backdrop-blur"
+            >
+              <div className="text-lg sm:text-2xl font-bold text-white">
+                {stat.value}
+              </div>
+              <div className="text-xs sm:text-sm text-blue-200">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* RIGHT CARD */}
+      <div className="bg-white rounded-2xl shadow-2xl p-5 sm:p-8">
+
+        {isSubmitted ? (
+          <div className="text-center py-10">
+            <CheckCircleIcon className="h-14 w-14 text-green-500 mx-auto mb-4" />
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+              Thank You!
+            </h3>
+            <p className="text-sm sm:text-base text-gray-600 mb-6">
+              Our property expert will contact you within 30 minutes.
+            </p>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-sm text-green-800">
+              <strong>Next step:</strong> Please check your email and keep your
+              phone available.
+            </div>
+          </div>
+        ) : (
+          <EmiCalculator />
+        )}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+    {/* 11th */}
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm mb-4">
+            <QuestionMarkCircleIcon className="h-5 w-5 text-blue-600" />
+            <span className="text-sm font-semibold text-gray-700">Quick Answers</span>
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Frequently Asked <span className="text-blue-600">Questions</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Find answers to common questions about buying, selling, and investing in properties in Delhi NCR.
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {categories1.map(category => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === category.id
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-sm'
+                }`}
+              >
+                {category.name}
+                <span className={`ml-2 px-2 py-1 rounded-full text-xs ${
+                  activeCategory === category.id
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 text-gray-600'
+                }`}>
+                  {category.count}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* FAQ Items */}
+          <div className="space-y-4">
+            {filteredFaqs.map(faq => (
+              <div
+                key={faq.id}
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+              >
+                <button
+                  onClick={() => toggleItem(faq.id)}
+                  className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-lg flex-shrink-0 mt-1">
+                      <QuestionMarkCircleIcon className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 pr-4">
+                      {faq.question}
+                    </h3>
+                  </div>
+                  <ChevronDownIcon
+                    className={`h-5 w-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ${
+                      openItems.includes(faq.id) ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                
+                <div
+                  className={`px-6 transition-all duration-300 ${
+                    openItems.includes(faq.id)
+                      ? 'pb-6 opacity-100'
+                      : 'max-h-0 opacity-0 overflow-hidden'
+                  }`}
+                >
+                  <div className="pl-12 border-t border-gray-100 pt-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Contact Card */}
+            <div className="bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl p-8 text-white">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+                  <PhoneIcon className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Still have questions?</h3>
+                  <p className="text-blue-100">Talk to our property experts</p>
+                </div>
+              </div>
+              <p className="text-blue-100 mb-6">
+                Our team is available 24/7 to answer your specific queries and provide personalized guidance.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>Instant response on calls</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>Free consultation</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>No obligation</span>
+                </div>
+              </div>
+              <button className="w-full mt-6 bg-white text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Call Now: +91 98765 43210
+              </button>
+            </div>
+
+            {/* Support Card */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-green-100 rounded-xl">
+                  <ChatBubbleLeftRightIcon className="h-6 w-6 text-green-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900">Live Chat Support</h3>
+                  <p className="text-gray-600">Get instant answers online</p>
+                </div>
+              </div>
+              <p className="text-gray-600 mb-6">
+                Connect with our support team in real-time for quick answers to your property queries.
+              </p>
+              <div className="space-y-3 text-sm text-gray-600">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span>Average response time: 2 minutes</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span>Available 8:00 AM - 10:00 PM</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span>Property experts online</span>
+                </div>
+              </div>
+              <button className="w-full mt-6 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                Start Live Chat
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="mt-8 text-center">
+            <p className="text-gray-600 mb-4">Quick Links</p>
+            <div className="flex flex-wrap justify-center gap-6">
+              <a href="#" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Property Buying Guide
+              </a>
+              <a href="#" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Home Loan Process
+              </a>
+              <a href="#" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Legal Documentation
+              </a>
+              <a href="#" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                RERA Guidelines
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </>
+  );
+}
