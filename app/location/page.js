@@ -768,15 +768,6 @@ const page = () => {
         </div>
       </div>
 
-      {/* Quick Contact Floating Button (Mobile) */}
-      <div className="fixed bottom-6 right-6 lg:hidden z-50">
-        <a 
-          href="tel:+919810323414"
-          className="flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-2xl animate-pulse"
-        >
-          <Phone className="w-6 h-6 text-white" />
-        </a>
-      </div>
     </section>
      {/* 2nd */}
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">

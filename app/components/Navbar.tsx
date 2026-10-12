@@ -204,6 +204,26 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
+
+              {/* Mobile Direct Call & WhatsApp */}
+              <div className="pt-4 border-t border-gray-100 space-y-2">
+                <Link
+                  href="tel:+919810323414"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
+                >
+                  <PhoneIcon className="h-5 w-5" />
+                  <span>Call: +91 98103 23414</span>
+                </Link>
+                <a
+                  href="https://wa.me/919810323414"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
+                >
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
             </div>
           </div>
         )}

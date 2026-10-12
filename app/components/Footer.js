@@ -82,23 +82,27 @@ export default function Footer() {
   const contactInfo = [
     {
       icon: PhoneIcon,
-      text: "+91 9810323414",
-      subtext: "Mon-Sun, 8AM-10PM"
+      text: "+91 98103 23414",
+      subtext: "Mon-Sun, 8AM-10PM",
+      href: "tel:+919810323414"
     },
     {
       icon: EnvelopeIcon,
       text: "info@noidahomes.com",
-      subtext: "We reply within 2 hours"
+      subtext: "We reply within 2 hours",
+      href: "mailto:info@noidahomes.com"
     },
     {
       icon: MapPinIcon,
       text: "Gaur City Center, Greater Noida-201318",
-      subtext: "Get directions"
+      subtext: "Get directions",
+      href: "https://maps.google.com/?q=Gaur+City+Center+Greater+Noida"
     },
     {
       icon: DevicePhoneMobileIcon,
-      text: "+91 9810323414",
-      subtext: "WhatsApp Business"
+      text: "+91 98103 23414",
+      subtext: "WhatsApp Business",
+      href: "https://wa.me/919810323414"
     }
   ];
 
@@ -278,14 +282,27 @@ export default function Footer() {
             <div className="space-y-3">
               {contactInfo.map((item, index) => {
                 const Icon = item.icon;
-                return (
-                  <div key={index} className="flex items-start gap-3">
-                    <Icon className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                const Content = (
+                  <div className="flex items-start gap-3 group">
+                    <Icon className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0 group-hover:text-blue-300 transition-colors" />
                     <div>
-                      <div className="text-white text-sm font-medium">{item.text}</div>
+                      <div className="text-white text-sm font-medium group-hover:text-blue-400 transition-colors">{item.text}</div>
                       <div className="text-gray-500 text-xs">{item.subtext}</div>
                     </div>
                   </div>
+                );
+                return item.href ? (
+                  <a
+                    key={index}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="block"
+                  >
+                    {Content}
+                  </a>
+                ) : (
+                  <div key={index}>{Content}</div>
                 );
               })}
             </div>

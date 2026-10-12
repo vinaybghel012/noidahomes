@@ -2826,9 +2826,12 @@ const features: Feature[] = [
                   <span>No obligation</span>
                 </div>
               </div>
-              <button className="w-full mt-6 bg-white text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              <a
+                href="tel:+919810323414"
+                className="w-full mt-6 bg-white text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center block"
+              >
                 Call Now: +91 98103 23414
-              </button>
+              </a>
             </div>
 
             {/* Support Card */}
@@ -2859,9 +2862,14 @@ const features: Feature[] = [
                   <span>Property experts online</span>
                 </div>
               </div>
-              <button className="w-full mt-6 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              <a
+                href="https://wa.me/919810323414"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full mt-6 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center block"
+              >
                 Start Live Chat
-              </button>
+              </a>
             </div>
           </div>
 
