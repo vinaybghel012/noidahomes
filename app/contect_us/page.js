@@ -61,7 +61,7 @@ export default function ContactPage() {
     {
       icon: <PhoneIcon className="h-6 w-6" />,
       title: "Call Us",
-      details: "+91 92170 42753",
+      details: "+91 98103 23414",
       subtitle: "Mon-Sat, 9AM to 7PM"
     },
     {
@@ -260,7 +260,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                        placeholder="+91 92170 42753"
+                        placeholder="+91 98103 23414"
                       />
                     </div>
 
@@ -408,10 +408,10 @@ export default function ContactPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
-              href="tel:+919876543210"
+              href="tel:+919810323414"
               className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition"
             >
-              Call Now: +91 92170 42753
+              Call Now: +91 98103 23414
             </a>
             <a
               href="mailto:info@noidahomes.com"

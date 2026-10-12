@@ -87,12 +87,12 @@ export default function Footer() {
     },
     {
       icon: EnvelopeIcon,
-      text: "[EMAIL_ADDRESS]",
+      text: "info@noidahomes.com",
       subtext: "We reply within 2 hours"
     },
     {
       icon: MapPinIcon,
-      text: "Gaur City Center, Greater Noida-201009",
+      text: "Gaur City Center, Greater Noida-201318",
       subtext: "Get directions"
     },
     {

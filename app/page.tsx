@@ -1139,13 +1139,13 @@ const features: Feature[] = [
     {
       icon: PhoneIcon,
       title: 'Call Us',
-      details: '+91 98765 43210',
+      details: '+91 98103 23414',
       subtitle: 'Mon-Sun, 8AM-10PM'
     },
     {
       icon: EnvelopeIcon,
       title: 'Email Us',
-      details: 'info@propertydeals.com',
+      details: 'info@noidahomes.com',
       subtitle: 'We reply within 2 hours'
     },
     {
@@ -2827,7 +2827,7 @@ const features: Feature[] = [
                 </div>
               </div>
               <button className="w-full mt-6 bg-white text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Call Now: +91 98765 43210
+                Call Now: +91 98103 23414
               </button>
             </div>
 

@@ -412,7 +412,7 @@ const [hoveredCard, setHoveredCard] = useState(null);
           </a>
 
           <a
-            href="tel:+919876543210"
+            href="tel:+919810323414"
             className="border-2 border-blue-400 text-blue-100 font-semibold py-4 px-8 rounded-lg"
           >
             Call Now
@@ -531,10 +531,10 @@ const [hoveredCard, setHoveredCard] = useState(null);
                 Book Consultation
               </a>
               <a
-                href="tel:+919876543210"
+                href="tel:+919810323414"
                 className="bg-transparent border-2 border-white hover:bg-white/10 font-semibold py-3 px-8 rounded-lg transition-colors inline-flex items-center justify-center"
               >
-                Call Now: +91 98765 43210
+                Call Now: +91 98103 23414
               </a>
             </div>
           </div>
@@ -922,17 +922,17 @@ const [hoveredCard, setHoveredCard] = useState(null);
               <div className="space-y-4 mb-8">
                 {/* Call Now Button */}
                 <a 
-                  href="tel:+911234567890"
+                  href="tel:+919810323414"
                   className="flex items-center justify-center gap-3 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group"
                 >
                   <Phone className="w-5 h-5" />
-                  <span>Call Now: +91 123 456 7890</span>
+                  <span>Call Now: +91 98103 23414</span>
                   <ArrowRight className="w-5 h-5 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
                 
                 {/* WhatsApp Button */}
                 <a 
-                  href="https://wa.me/911234567890?text=Hi,%20I'm%20interested%20in%20properties%20in%20Delhi%20NCR"
+                  href="https://wa.me/919810323414?text=Hi,%20I'm%20interested%20in%20properties%20in%20Delhi%20NCR"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group"

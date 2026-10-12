@@ -652,7 +652,7 @@ const page = () => {
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               {/* Call Button */}
               <a 
-                href="tel:+911234567890"
+                href="tel:+919810323414"
                 className="group flex items-center justify-center gap-3 bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl"
               >
                 <Phone className="w-5 h-5" />
@@ -662,7 +662,7 @@ const page = () => {
 
               {/* WhatsApp Button */}
               <a 
-                href="https://wa.me/911234567890?text=Hi,%20I'm%20interested%20in%20properties%20in%20Noida%20Ghaziabad%20area"
+                href="https://wa.me/919810323414?text=Hi,%20I'm%20interested%20in%20properties%20in%20Noida%20Ghaziabad%20area"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl"
@@ -771,7 +771,7 @@ const page = () => {
       {/* Quick Contact Floating Button (Mobile) */}
       <div className="fixed bottom-6 right-6 lg:hidden z-50">
         <a 
-          href="tel:+911234567890"
+          href="tel:+919810323414"
           className="flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-2xl animate-pulse"
         >
           <Phone className="w-6 h-6 text-white" />
@@ -1820,7 +1820,7 @@ const page = () => {
               Book Free Investment Consultation
             </button>
             <button className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl border-2 border-blue-200 hover:bg-blue-50 transition-colors">
-              Call Now: +91 123 456 7890
+              Call Now: +91 98103 23414
             </button>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-500">

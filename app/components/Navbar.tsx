@@ -144,9 +144,9 @@ export default function Navbar() {
 
             {/* DESKTOP CTA */}
             <div className="hidden lg:flex items-center gap-4">
-              <Link href="tel:+919217042753" className="flex items-center gap-2 text-gray-700 hover:text-blue-600">
+              <Link href="tel:+919810323414" className="flex items-center gap-2 text-gray-700 hover:text-blue-600">
                 <PhoneIcon className="h-5 w-5" />
-                <span>+91 92170 42753</span>
+                <span>+91 98103 23414</span>
               </Link>
               <Link href="/contect_us" className="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-700">
                 Get Consultation

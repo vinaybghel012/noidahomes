@@ -455,7 +455,7 @@ export default function page() {
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
       rating: 4.9,
       propertiesSold: "500+",
-      phone: "+91 98765 43210",
+      phone: "+91 98103 23414",
       email: "rajesh@propertydeals.com",
       areas: ["Gurugram", "South Delhi"],
       achievements: ["Top Performer 2023", "Best Customer Service"]
@@ -469,7 +469,7 @@ export default function page() {
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
       rating: 4.8,
       propertiesSold: "350+",
-      phone: "+91 98765 43211",
+      phone: "+91 98103 23414",
       email: "priya@propertydeals.com",
       areas: ["Noida", "Greater Noida"],
       achievements: ["Rising Star 2023", "Client Choice Award"]
@@ -483,7 +483,7 @@ export default function page() {
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
       rating: 4.9,
       propertiesSold: "400+",
-      phone: "+91 98765 43212",
+      phone: "+91 98103 23414",
       email: "amit@propertydeals.com",
       areas: ["Cyber City", "All Commercial Hubs"],
       achievements: ["Commercial Expert", "Top Negotiator"]
@@ -497,7 +497,7 @@ export default function page() {
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
       rating: 4.9,
       propertiesSold: "280+",
-      phone: "+91 98765 43213",
+      phone: "+91 98103 23414",
       email: "sunita@propertydeals.com",
       areas: ["Golf Course Road", "South Delhi"],
       achievements: ["Luxury Specialist", "Elite Club Member"]
@@ -511,7 +511,7 @@ export default function page() {
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
       rating: 4.8,
       propertiesSold: "320+",
-      phone: "+91 98765 43214",
+      phone: "+91 98103 23414",
       email: "vikram@propertydeals.com",
       areas: ["All Delhi NCR", "International"],
       achievements: ["NRI Expert", "Global Client Base"]
@@ -525,7 +525,7 @@ export default function page() {
       image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face",
       rating: 4.7,
       propertiesSold: "200+",
-      phone: "+91 98765 43215",
+      phone: "+91 98103 23414",
       email: "neha@propertydeals.com",
       areas: ["All Delhi NCR"],
       achievements: ["Rental Expert", "Management Pro"]
@@ -2476,11 +2476,11 @@ export default function page() {
                 Start Free Consultation
               </a>
               <a
-                href="tel:+919876543210"
+                href="tel:+919810323414"
                 className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center"
               >
                 <PhoneIcon className="h-5 w-5 mr-2" />
-                Call: +91 98765 43210
+                Call: +91 98103 23414
               </a>
             </div>
           </div>
@@ -3246,7 +3246,7 @@ export default function page() {
                 <div className="space-y-4">
                   {/* WhatsApp Button */}
                   <a
-                    href="https://wa.me/919876543210"
+                    href="https://wa.me/919810323414"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-green-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
@@ -3257,11 +3257,11 @@ export default function page() {
 
                   {/* Call Now Button */}
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+919810323414"
                     className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
                   >
                     <PhoneIcon className="h-5 w-5" />
-                    <span>Call Now: +91 98765 43210</span>
+                    <span>Call Now: +91 98103 23414</span>
                   </a>
 
                   {/* Free Consultation Button */}
@@ -3453,10 +3453,10 @@ export default function page() {
                 </div>
               </div>
               <a
-                href="tel:+919876543210"
+                href="tel:+919810323414"
                 className="w-full mt-6 bg-white text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center block"
               >
-                Call Now: +91 98765 43210
+                Call Now: +91 98103 23414
               </a>
             </div>
 
@@ -3489,7 +3489,7 @@ export default function page() {
                 </div>
               </div>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919810323414"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full mt-6 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center block"
