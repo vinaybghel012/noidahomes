@@ -7,6 +7,7 @@ export default function FloatingContact() {
       <a
         href="tel:+919810323414"
         title="Call +91 98103 23414"
+        aria-label="Call Noida Homes at +91 98103 23414"
         className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95"
       >
         <svg
@@ -34,8 +35,9 @@ export default function FloatingContact() {
       <a
         href="https://wa.me/919810323414?text=Hi,%20I'm%20interested%20in%20properties%20in%20Noida"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         title="Chat on WhatsApp +91 98103 23414"
+        aria-label="Chat with Noida Homes on WhatsApp"
         className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 animate-bounce-subtle"
       >
         <svg

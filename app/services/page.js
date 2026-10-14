@@ -428,7 +428,7 @@ const [hoveredCard, setHoveredCard] = useState(null);
             className="p-6 rounded-xl bg-blue-900/60 border border-blue-700/40 hover:bg-blue-900/80 transition-all"
           >
             {service.icon}
-            <h3 className="text-xl font-bold mt-4">{service.title}</h3>
+            <p className="text-xl font-bold mt-4">{service.title}</p>
             <p className="text-blue-100 text-sm mt-2">{service.description}</p>
           </div>
         ))}
@@ -934,7 +934,7 @@ const [hoveredCard, setHoveredCard] = useState(null);
                 <a 
                   href="https://wa.me/919810323414?text=Hi,%20I'm%20interested%20in%20properties%20in%20Delhi%20NCR"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="flex items-center justify-center gap-3 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group"
                 >
                   <MessageCircle className="w-5 h-5" />

@@ -567,8 +567,8 @@ const page = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-indigo-900/80 to-purple-900/70 z-10"></div>
-        {/* You can add a background image here */}
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-20"></div>
+        {/* Background image */}
+        <div className="absolute inset-0 bg-[url('/images/bilal-ahmad-_ua9kZBbjuw-unsplash.jpg')] bg-cover bg-center opacity-20"></div>
         
         {/* Decorative Elements */}
         <div className="absolute top-20 right-20 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
@@ -581,7 +581,7 @@ const page = () => {
           <div className="h-40 bg-gradient-to-br from-blue-400 to-cyan-300 rounded-lg mb-3"></div>
           <div className="flex justify-between items-center">
             <div>
-              <h4 className="font-bold text-gray-900">3 BHK Apartment</h4>
+              <p className="font-bold text-gray-900">3 BHK Apartment</p>
               <p className="text-sm text-gray-600">Sector 128, Noida</p>
             </div>
             <div className="text-blue-600 font-bold">₹1.2Cr</div>
@@ -594,7 +594,7 @@ const page = () => {
           <div className="h-40 bg-gradient-to-br from-green-400 to-emerald-300 rounded-lg mb-3"></div>
           <div className="flex justify-between items-center">
             <div>
-              <h4 className="font-bold text-gray-900">Commercial Space</h4>
+              <p className="font-bold text-gray-900">Commercial Space</p>
               <p className="text-sm text-gray-600">Indirapuram</p>
             </div>
             <div className="text-green-600 font-bold">₹2.5Cr</div>
@@ -616,8 +616,7 @@ const page = () => {
 
             {/* Main Heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-              Premium Properties in 
-              <span className="block text-amber-400 mt-2">Noida • Ghaziabad • Greater Noida</span>
+              Premium Properties in <span className="text-amber-400">Noida & NCR</span>
             </h1>
 
             {/* Description */}
@@ -664,7 +663,7 @@ const page = () => {
               <a 
                 href="https://wa.me/919810323414?text=Hi,%20I'm%20interested%20in%20properties%20in%20Noida%20Ghaziabad%20area"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="group flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl"
               >
                 <MessageCircle className="w-5 h-5" />
@@ -709,9 +708,9 @@ const page = () => {
           {/* Right Column - Property Form/Image */}
           <div className="hidden lg:block">
             <div className="bg-white rounded-2xl shadow-2xl p-8 transform translate-y-10">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Find Your Perfect Property
-              </h3>
+              </h2>
               
               <div className="space-y-4">
                 <div>
@@ -779,10 +778,10 @@ const page = () => {
             <span className="font-semibold">Prime Delhi NCR Locations</span>
           </div>
           
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Premium <span className="text-blue-600">Real Estate</span> in 
             <span className="block text-amber-500">Noida, Ghaziabad & Greater Noida</span>
-          </h1>
+          </h2>
           
           <p className="text-lg text-gray-600 max-w-4xl mx-auto">
             Discover why Delhi NCR remains one of India's most sought-after real estate destinations
@@ -1213,10 +1212,10 @@ const page = () => {
             <span className="font-semibold">Prime Localities in Delhi NCR</span>
           </div>
           
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Explore Top <span className="text-blue-600">Localities</span> in 
             <span className="block text-amber-500">Noida, Ghaziabad & Greater Noida</span>
-          </h1>
+          </h2>
           
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Discover the most sought-after areas with verified property listings, price trends, and growth potential

@@ -790,7 +790,7 @@ const features: Feature[] = [
       name: "Rajesh Kumar",
       location: "Gurugram",
       rating: 5,
-      review: "PropertyDeals helped me find my dream 3BHK in Sector 62. The entire process was seamless - from site visits to documentation. Their team ensured complete transparency and saved me from hidden costs that other brokers usually charge.",
+      review: "Noida Homes helped me find my dream 3BHK in Sector 62. The entire process was seamless - from site visits to documentation. Their team ensured complete transparency and saved me from hidden costs that other brokers usually charge.",
       photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       property: "3 BHK Apartment in Elite Homes",
       purchaseDate: "January 2024",
@@ -803,7 +803,7 @@ const features: Feature[] = [
       name: "Priya Sharma",
       location: "Noida",
       rating: 5,
-      review: "As a first-time home buyer, I was quite nervous. But the team at PropertyDeals made it so easy! They explained every document, negotiated the best price, and even helped with home loan processing. Zero brokerage was the cherry on top!",
+      review: "As a first-time home buyer, I was quite nervous. But the team at Noida Homes made it so easy! They explained every document, negotiated the best price, and even helped with home loan processing. Zero brokerage was the cherry on top!",
       photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
       property: "2 BHK in Tech Park Residency",
       purchaseDate: "December 2023",
@@ -829,7 +829,7 @@ const features: Feature[] = [
       name: "Sunita Mehta",
       location: "Faridabad",
       rating: 5,
-      review: "After dealing with multiple brokers, finally found PropertyDeals. Their verified listings saved me from fake properties. The free site visits and honest advice helped me choose the right property within my budget.",
+      review: "After dealing with multiple brokers, finally found Noida Homes. Their verified listings saved me from fake properties. The free site visits and honest advice helped me choose the right property within my budget.",
       photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       property: "Builder Floor in Greenfield",
       purchaseDate: "February 2024",
@@ -1987,7 +1987,7 @@ const features: Feature[] = [
             <span className="text-sm font-semibold text-gray-700">Trusted by 50,000+ Customers</span>
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Why Choose <span className="text-blue-600">PropertyDeals</span>
+            Why Choose <span className="text-blue-600">Noida Homes</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             We are committed to making your property journey seamless, transparent, and successful with our customer-first approach.
@@ -2865,7 +2865,7 @@ const features: Feature[] = [
               <a
                 href="https://wa.me/919810323414"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="w-full mt-6 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center block"
               >
                 Start Live Chat

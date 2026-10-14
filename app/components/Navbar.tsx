@@ -78,11 +78,11 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16 lg:h-20">
 
             {/* LOGO */}
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center" aria-label="Noida Homes - Real Estate Homepage">
               <div className="relative w-44 h-36">
                 <Image
                   src="/images/reallogoo1.webp"
-                  alt="PropertyDeals Logo"
+                  alt="Noida Homes - Real Estate Logo"
                   fill
                   className="object-contain"
                   priority
@@ -218,7 +218,7 @@ export default function Navbar() {
                 <a
                   href="https://wa.me/919810323414"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
                 >
                   <span>Chat on WhatsApp</span>

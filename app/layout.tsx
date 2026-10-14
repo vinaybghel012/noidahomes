@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noida Homes - Premium Real Estate Properties in Noida & NCR",
-  description: "Find your dream residential and commercial property in Noida and Greater Noida with Noida Homes.",
+  title: "Noida Homes | Properties in Noida & Greater Noida",
+  description: "Explore verified residential & commercial properties in Noida and Greater Noida. Get expert guidance and best market deals with Noida Homes.",
 };
 
 export default function RootLayout({

@@ -427,7 +427,7 @@ export default function PreLaunchProjectsSlider() {
                   </span>
                 </div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Discover Our <span className="text-blue-600">Exclusive Pre Lunch Opportunities In Noida</span>
+                Discover Our <span className="text-blue-600">Exclusive Pre Launch Opportunities In Noida</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Explore our premium pre-launch properties with special early access benefits.

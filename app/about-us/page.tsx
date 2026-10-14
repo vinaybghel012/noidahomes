@@ -1,6 +1,8 @@
 // components/AboutBanner.tsx
 'use client';
 
+import Link from 'next/link';
+
 import { 
   PhoneIcon, 
   CalendarIcon,
@@ -456,7 +458,7 @@ export default function page() {
       rating: 4.9,
       propertiesSold: "500+",
       phone: "+91 98103 23414",
-      email: "rajesh@propertydeals.com",
+      email: "rajesh@noidahomes.com",
       areas: ["Gurugram", "South Delhi"],
       achievements: ["Top Performer 2023", "Best Customer Service"]
     },
@@ -470,7 +472,7 @@ export default function page() {
       rating: 4.8,
       propertiesSold: "350+",
       phone: "+91 98103 23414",
-      email: "priya@propertydeals.com",
+      email: "priya@noidahomes.com",
       areas: ["Noida", "Greater Noida"],
       achievements: ["Rising Star 2023", "Client Choice Award"]
     },
@@ -484,7 +486,7 @@ export default function page() {
       rating: 4.9,
       propertiesSold: "400+",
       phone: "+91 98103 23414",
-      email: "amit@propertydeals.com",
+      email: "amit@noidahomes.com",
       areas: ["Cyber City", "All Commercial Hubs"],
       achievements: ["Commercial Expert", "Top Negotiator"]
     },
@@ -498,7 +500,7 @@ export default function page() {
       rating: 4.9,
       propertiesSold: "280+",
       phone: "+91 98103 23414",
-      email: "sunita@propertydeals.com",
+      email: "sunita@noidahomes.com",
       areas: ["Golf Course Road", "South Delhi"],
       achievements: ["Luxury Specialist", "Elite Club Member"]
     },
@@ -512,7 +514,7 @@ export default function page() {
       rating: 4.8,
       propertiesSold: "320+",
       phone: "+91 98103 23414",
-      email: "vikram@propertydeals.com",
+      email: "vikram@noidahomes.com",
       areas: ["All Delhi NCR", "International"],
       achievements: ["NRI Expert", "Global Client Base"]
     },
@@ -526,7 +528,7 @@ export default function page() {
       rating: 4.7,
       propertiesSold: "200+",
       phone: "+91 98103 23414",
-      email: "neha@propertydeals.com",
+      email: "neha@noidahomes.com",
       areas: ["All Delhi NCR"],
       achievements: ["Rental Expert", "Management Pro"]
     }
@@ -826,7 +828,7 @@ export default function page() {
       role: "Software Engineer",
       location: "Gurugram",
       rating: 5,
-      review: "PropertyDeals made my first home buying experience incredible! Their team ensured complete transparency and helped me negotiate the best price. The zero brokerage policy saved me a significant amount.",
+      review: "Noida Homes made my first home buying experience incredible! Their team ensured complete transparency and helped me negotiate the best price. The zero brokerage policy saved me a significant amount.",
       photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       property: "3 BHK in Sector 62",
       purchaseDate: "January 2024",
@@ -839,7 +841,7 @@ export default function page() {
       role: "Marketing Manager",
       location: "Noida",
       rating: 5,
-      review: "As an NRI, I was worried about property buying in India. But PropertyDeals assigned me a dedicated manager who handled everything professionally. The virtual tours and regular updates were fantastic!",
+      review: "As an NRI, I was worried about property buying in India. But Noida Homes assigned me a dedicated manager who handled everything professionally. The virtual tours and regular updates were fantastic!",
       photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
       property: "2 BHK in Expressway",
       purchaseDate: "December 2023",
@@ -1037,7 +1039,7 @@ export default function page() {
       id: 8,
       type: 'image',
       title: 'Property Expo 2023',
-      description: 'Representing PropertyDeals at the annual real estate expo',
+      description: 'Representing Noida Homes at the annual real estate expo',
       src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600',
       category: 'events'
     },
@@ -1221,7 +1223,7 @@ export default function page() {
             {/* Intro Text */}
             <div className="space-y-4 mb-8 max-w-2xl">
               <p className="text-xl text-gray-600 leading-relaxed">
-                PropertyDeals is Delhi NCR's most trusted real estate platform, helping thousands of families 
+                Noida Homes is Delhi NCR's most trusted real estate platform, helping thousands of families 
                 find their dream homes and make smart property investments.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
@@ -1293,10 +1295,10 @@ export default function page() {
                   <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <BuildingOfficeIcon className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <p className="text-2xl font-bold text-gray-900 mb-4">
                     Building Dreams,
                     <span className="block text-blue-600">Creating Homes</span>
-                  </h3>
+                  </p>
                   <p className="text-gray-600 mb-6">
                     Your trusted partner in the journey to find the perfect property
                   </p>
@@ -1360,7 +1362,7 @@ export default function page() {
             </div>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                PropertyDeals was founded in 2012 by a group of real estate enthusiasts who recognized 
+                Noida Homes was founded in 2012 by a group of real estate enthusiasts who recognized 
                 the need for transparency and reliability in the Delhi NCR property market. What started 
                 as a small office in Connaught Place has now grown into a trusted brand serving thousands 
                 of customers.
@@ -1722,7 +1724,7 @@ export default function page() {
             <span className="text-sm font-semibold text-gray-700">Trusted by 50,000+ Customers</span>
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Why Choose <span className="text-blue-600">PropertyDeals</span>
+            Why Choose <span className="text-blue-600">Noida Homes</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             We are committed to making your property journey seamless, transparent, and successful 
@@ -2067,6 +2069,8 @@ export default function page() {
                   </a>
                   <a
                     href={`https://wa.me/${member.phone.replace('+', '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
                     className="flex-1 border border-green-600 text-green-600 py-2 px-3 rounded-lg text-sm font-semibold hover:bg-green-50 transition-colors flex items-center justify-center gap-1"
                   >
                     <ChatBubbleLeftRightIcon className="h-4 w-4" />
@@ -2523,7 +2527,7 @@ export default function page() {
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Don't just take our word for it. Here's what our satisfied clients have to say 
-            about their experience with PropertyDeals.
+            about their experience with Noida Homes.
           </p>
         </div>
 
@@ -2563,7 +2567,7 @@ export default function page() {
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                    <h3 className="font-semibold text-gray-900 text-base">{testimonial.name}</h3>
                     {testimonial.verified && (
                       <CheckBadgeIcon className="h-4 w-4 text-blue-500" />
                     )}
@@ -2625,7 +2629,7 @@ export default function page() {
                         />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                            <h3 className="font-semibold text-gray-900 text-base">{testimonial.name}</h3>
                             {testimonial.verified && (
                               <CheckBadgeIcon className="h-4 w-4 text-blue-500" />
                             )}
@@ -2694,15 +2698,15 @@ export default function page() {
               Join Thousands of Happy Customers
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Experience the PropertyDeals difference and make your property journey smooth and successful.
+              Experience the Noida Homes difference and make your property journey smooth and successful.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
+              <Link
+                href="/contect_us"
                 className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Start Your Journey Today
-              </a>
+              </Link>
               <a
                 href="/testimonials"
                 className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
@@ -2956,7 +2960,7 @@ export default function page() {
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Take a virtual tour of our offices, meet our team, and see what makes 
-            PropertyDeals the most trusted real estate platform in Delhi NCR.
+            Noida Homes the most trusted real estate platform in Delhi NCR.
           </p>
         </div>
 
@@ -3248,7 +3252,7 @@ export default function page() {
                   <a
                     href="https://wa.me/919810323414"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer nofollow"
                     className="w-full bg-green-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
                   >
                     <ChatBubbleLeftRightIcon className="h-5 w-5" />
@@ -3285,7 +3289,7 @@ export default function page() {
 
               {/* Additional Info Card */}
               <div className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-6 text-white text-center">
-                <h4 className="font-semibold mb-2">Why Choose PropertyDeals?</h4>
+                <h4 className="font-semibold mb-2">Why Choose Noida Homes?</h4>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <CheckCircleIcon className="h-4 w-4 text-green-300" />
@@ -3491,7 +3495,7 @@ export default function page() {
               <a
                 href="https://wa.me/919810323414"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="w-full mt-6 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center block"
               >
                 Start Live Chat

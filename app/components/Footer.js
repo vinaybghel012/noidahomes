@@ -34,21 +34,21 @@ export default function Footer() {
   ];
 
   const companyLinks = [
-    { name: "About Us", href: "/about" },
+    { name: "About Us", href: "/about-us" },
     { name: "Our Services", href: "/services" },
-    { name: "Testimonials", href: "/testimonials" },
-    { name: "Careers", href: "/careers" },
-    { name: "Blog", href: "/blog" },
-    { name: "Press", href: "/press" }
+    { name: "Locations", href: "/location" },
+    { name: "Contact Us", href: "/contect_us" },
+    { name: "Careers", href: "/about-us" },
+    { name: "Customer Reviews", href: "/about-us" }
   ];
 
   const supportLinks = [
-    { name: "Contact Us", href: "/contact" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms & Conditions", href: "/terms" },
-    { name: "RERA Guidelines", href: "/rera" },
-    { name: "Site Map", href: "/sitemap" }
+    { name: "Contact Us", href: "/contect_us" },
+    { name: "Property Consultation", href: "/contect_us" },
+    { name: "Our Locations", href: "/location" },
+    { name: "All Services", href: "/services" },
+    { name: "RERA Guidelines", href: "/about-us" },
+    { name: "Site Map", href: "/sitemap.xml" }
   ];
 
   const socialMedia = [
@@ -119,13 +119,13 @@ export default function Footer() {
               </div> */}
               <div>
                 <div className="flex items-center">
-                  <Link href="/" className="flex items-center gap-3">
+                  <Link href="/" className="flex items-center gap-3" aria-label="Noida Homes - Real Estate Homepage">
 
                     {/* Logo Image */}
-                    <div className="w-55 h-4 0 relative">
+                    <div className="w-56 h-14 relative">
                       <Image
                         src="/images/reallogoo1.webp"
-                        alt="PropertyDeals Logo"
+                        alt="Noida Homes - Real Estate Logo"
                         fill
                         className="object-contain"
                         priority
@@ -135,7 +135,7 @@ export default function Footer() {
                     {/* Brand Text */}
                     {/* <div className="hidden sm:block">
                       <div className="text-xl font-bold text-gray-900">
-                        PropertyDeals
+                        Noida Homes
                       </div>
                       <div className="text-xs text-gray-500 -mt-1">
                         Real Estate Solutions
@@ -160,7 +160,8 @@ export default function Footer() {
                     key={social.name}
                     href={social.href}
                     className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors group"
-                    aria-label={social.name}
+                    aria-label={`Follow Noida Homes on ${social.name}`}
+                    rel="noopener noreferrer nofollow"
                   >
                     <svg
                       className="w-5 h-5 text-gray-400 group-hover:text-white"
@@ -179,7 +180,7 @@ export default function Footer() {
             <a
               href="https://wa.me/919810323414"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors w-full justify-center mb-4"
             >
               <ChatBubbleLeftRightIcon className="h-5 w-5" />
@@ -193,27 +194,27 @@ export default function Footer() {
             <ul className="space-y-3">
               {locations.map((location) => (
                 <li key={location.name}>
-                  <a
-                    href={`/locations/${location.name.toLowerCase()}`}
+                  <Link
+                    href="/location"
                     className="text-gray-400 hover:text-white transition-colors flex justify-between group"
                   >
                     <span>{location.name}</span>
                     <span className="text-gray-600 group-hover:text-gray-400 text-sm">
                       {location.count}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
-            <a
-              href="/all-locations"
+            <Link
+              href="/location"
               className="inline-flex items-center text-blue-400 hover:text-blue-300 mt-4 text-sm font-medium"
             >
               View All Locations
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* All Categories */}
@@ -222,27 +223,27 @@ export default function Footer() {
             <ul className="space-y-3">
               {categories.map((category) => (
                 <li key={category.name}>
-                  <a
-                    href={`/categories/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  <Link
+                    href="/services"
                     className="text-gray-400 hover:text-white transition-colors flex justify-between group"
                   >
                     <span className="truncate">{category.name}</span>
                     <span className="text-gray-600 group-hover:text-gray-400 text-sm flex-shrink-0 ml-2">
                       {category.count}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
-            <a
-              href="/all-categories"
+            <Link
+              href="/services"
               className="inline-flex items-center text-blue-400 hover:text-blue-300 mt-4 text-sm font-medium"
             >
               Browse All Categories
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Company Links */}
@@ -315,7 +316,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm">
-              © {currentYear} PropertyDeals. All rights reserved.
+              © {currentYear} Noida Homes. All rights reserved.
             </div>
 
             <div className="flex items-center gap-6 text-sm text-gray-400">
