@@ -1254,14 +1254,14 @@ export default function page() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <a
-                href="/contact"
+                href="/contect_us"
                 className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <PhoneIcon className="h-5 w-5" />
                 Contact Us Today
               </a>
               <a
-                href="/schedule-call"
+                href="/contect_us"
                 className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl border border-blue-200"
               >
                 <CalendarIcon className="h-5 w-5" />
@@ -1697,7 +1697,7 @@ export default function page() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact"
+                href="/contect_us"
                 className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
               >
                 <CogIcon className="h-5 w-5 mr-2" />
@@ -1913,14 +1913,14 @@ export default function page() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact"
+                href="/contect_us"
                 className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
               >
                 <UserIcon className="h-5 w-5 mr-2" />
                 Get Free Consultation
               </a>
               <a
-                href="/properties"
+                href="/services"
                 className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 Browse Properties
@@ -2094,14 +2094,14 @@ export default function page() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact"
+                href="/contect_us"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
                 <PhoneIcon className="h-5 w-5 mr-2" />
                 Get Matched with an Expert
               </a>
               <a
-                href="/team"
+                href="/about-us"
                 className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
               >
                 View Full Team Directory
@@ -2473,7 +2473,7 @@ export default function page() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact"
+                href="/contect_us"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
                 <ChatBubbleLeftRightIcon className="h-5 w-5 mr-2" />
@@ -2708,7 +2708,7 @@ export default function page() {
                 Start Your Journey Today
               </Link>
               <a
-                href="/testimonials"
+                href="/about-us"
                 className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 Read More Reviews
@@ -2929,14 +2929,14 @@ export default function page() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact"
+                href="/contect_us"
                 className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
               >
                 <MapPinIcon className="h-5 w-5 mr-2" />
                 Get Location Recommendation
               </a>
               <a
-                href="/all-locations"
+                href="/location"
                 className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 Compare All Locations
@@ -3270,7 +3270,7 @@ export default function page() {
 
                   {/* Free Consultation Button */}
                   <a
-                    href="/contact"
+                    href="/contect_us"
                     className="w-full border-2 border-blue-600 text-blue-600 py-4 px-6 rounded-xl font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-3"
                   >
                     <UserGroupIcon className="h-5 w-5" />
@@ -3507,16 +3507,16 @@ export default function page() {
           <div className="mt-8 text-center">
             <p className="text-gray-600 mb-4">Quick Links</p>
             <div className="flex flex-wrap justify-center gap-6">
-              <a href="/buying-guide" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <a href="/services" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
                 Property Buying Guide
               </a>
-              <a href="/loan-process" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <a href="/services" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
                 Home Loan Process
               </a>
-              <a href="/legal-docs" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <a href="/services" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
                 Legal Documentation
               </a>
-              <a href="/rera-guidelines" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <a href="/about-us" className="text-blue-600 hover:text-blue-700 font-medium text-sm">
                 RERA Guidelines
               </a>
             </div>

@@ -1426,16 +1426,16 @@ const page = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <a 
-                  href="/area-consultation"
+                  href="/contect_us"
                   className="bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-6 rounded-xl transition-colors"
                 >
                   Book Area Consultation
                 </a>
                 <a 
-                  href="/property-guide"
+                  href="/services"
                   className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-colors"
                 >
-                  Download Area Guide
+                  Explore Property Services
                 </a>
               </div>
             </div>
@@ -1528,7 +1528,7 @@ const page = () => {
           
           <div className="mt-8 text-center">
             <a 
-              href="/compare-localities"
+              href="/location"
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold"
             >
               Compare More Localities
@@ -2139,12 +2139,18 @@ const page = () => {
           </div>
           
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-gray-100 transition-colors">
+            <a 
+              href="/contect_us" 
+              className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-gray-100 transition-colors text-center inline-block"
+            >
               Book Free Consultation
-            </button>
-            <button className="px-8 py-4 bg-blue-800 hover:bg-blue-900 text-white font-bold rounded-xl transition-colors">
-              Download Process PDF
-            </button>
+            </a>
+            <a 
+              href="/services" 
+              className="px-8 py-4 bg-blue-800 hover:bg-blue-900 text-white font-bold rounded-xl transition-colors text-center inline-block"
+            >
+              Explore All Services
+            </a>
           </div>
         </div>
       </div>

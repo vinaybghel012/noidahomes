@@ -405,7 +405,7 @@ const [hoveredCard, setHoveredCard] = useState(null);
 
         <div className="flex flex-col sm:flex-row gap-4">
           <a
-            href="/contact"
+            href="/contect_us"
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all"
           >
             Get Free Consultation
@@ -524,7 +524,7 @@ const [hoveredCard, setHoveredCard] = useState(null);
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact"
+                href="/contect_us"
                 className="bg-white text-blue-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors inline-flex items-center justify-center"
               >
                 <PhoneIcon className="h-5 w-5 mr-2" />

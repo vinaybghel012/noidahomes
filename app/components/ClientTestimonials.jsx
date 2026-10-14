@@ -263,6 +263,7 @@ const ClientTestimonials = () => {
               {/* Navigation Arrows */}
               <button 
                 onClick={prevTestimonial}
+                aria-label="Previous Testimonial"
                 className="absolute left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center text-gray-600 hover:text-blue-600 hover:shadow-2xl transition-all duration-300"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -270,6 +271,7 @@ const ClientTestimonials = () => {
               
               <button 
                 onClick={nextTestimonial}
+                aria-label="Next Testimonial"
                 className="absolute right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center text-gray-600 hover:text-blue-600 hover:shadow-2xl transition-all duration-300"
               >
                 <ChevronRight className="w-6 h-6" />
@@ -367,6 +369,7 @@ const ClientTestimonials = () => {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
+                aria-label={`Go to testimonial slide ${index + 1}`}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === activeIndex 
                     ? 'bg-gradient-to-r from-blue-600 to-cyan-500 w-8' 

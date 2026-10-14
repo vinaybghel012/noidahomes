@@ -38,8 +38,83 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/team",
+        destination: "/about-us",
+        permanent: true,
+      },
+      {
+        source: "/testimonials",
+        destination: "/about-us",
+        permanent: true,
+      },
+      {
+        source: "/rera-guidelines",
+        destination: "/about-us",
+        permanent: true,
+      },
+      {
         source: "/contact",
         destination: "/contect_us",
+        permanent: true,
+      },
+      {
+        source: "/contact-us",
+        destination: "/contect_us",
+        permanent: true,
+      },
+      {
+        source: "/schedule-call",
+        destination: "/contect_us",
+        permanent: true,
+      },
+      {
+        source: "/area-consultation",
+        destination: "/contect_us",
+        permanent: true,
+      },
+      {
+        source: "/properties",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/properties/:path*",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/:path+",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/all-categories",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/categories/:path*",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/property-guide",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/buying-guide",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/loan-process",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/legal-docs",
+        destination: "/services",
         permanent: true,
       },
       {
@@ -53,13 +128,18 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/all-categories",
-        destination: "/services",
+        source: "/compare-localities",
+        destination: "/location",
         permanent: true,
       },
       {
-        source: "/categories/:path*",
-        destination: "/services",
+        source: "/blog",
+        destination: "/about-us",
+        permanent: true,
+      },
+      {
+        source: "/blog/:path*",
+        destination: "/about-us",
         permanent: true,
       },
     ];

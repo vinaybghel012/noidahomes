@@ -450,6 +450,7 @@ export default function PreLaunchProjectsSlider() {
               <button
                 onClick={prevSlide}
                 disabled={currentIndex === 0}
+                aria-label="Previous Pre-Launch Project"
                 className={`w-10 h-10 flex items-center justify-center rounded-lg transition-all ${
                   currentIndex === 0
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
@@ -461,6 +462,7 @@ export default function PreLaunchProjectsSlider() {
               <button
                 onClick={nextSlide}
                 disabled={currentIndex === projects.length - 1}
+                aria-label="Next Pre-Launch Project"
                 className={`w-10 h-10 flex items-center justify-center rounded-lg transition-all ${
                   currentIndex === projects.length - 1
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
@@ -614,6 +616,7 @@ export default function PreLaunchProjectsSlider() {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
+                aria-label={`View pre-launch project slide ${index + 1}`}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   currentIndex === index
                     ? 'w-8 bg-gradient-to-r from-blue-500 to-purple-500'

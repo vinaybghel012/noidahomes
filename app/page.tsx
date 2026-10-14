@@ -469,7 +469,7 @@ const properties: Property[] = [
       startingPrice: "₹4Cr",
       growth: "14%",
       tags: ["Premium", "Panoramic View", "Luxury"],
-      route: "/properties/penthouse",
+      route: "/services",
       stats: [
         { label: "Avg. Size", value: "2500-6000 sqft" },
         { label: "Rental Yield", value: "2.5-3.5%" }
@@ -485,7 +485,7 @@ const properties: Property[] = [
       startingPrice: "₹1.5Cr",
       growth: "25%",
       tags: ["Spacious", "Garden", "Weekend"],
-      route: "/properties/farmhouse",
+      route: "/services",
       stats: [
         { label: "Avg. Size", value: "1-5 acres" },
         { label: "Appreciation", value: "18-22%" }
@@ -501,7 +501,7 @@ const properties: Property[] = [
       startingPrice: "₹25L",
       growth: "15%",
       tags: ["2-4 BHK", "Gated Community", "Amenities"],
-      route: "/properties/residential-apartments",
+      route: "/services",
       stats: [
         { label: "Avg. Size", value: "800-2000 sqft" },
         { label: "Rental Yield", value: "3-4%" }
@@ -517,7 +517,7 @@ const properties: Property[] = [
       startingPrice: "₹50L",
       growth: "18%",
       tags: ["Office", "Retail", "IT Park"],
-      route: "/properties/commercial",
+      route: "/services",
       stats: [
         { label: "Avg. Size", value: "500-5000 sqft" },
         { label: "Rental Yield", value: "6-8%" }
@@ -533,7 +533,7 @@ const properties: Property[] = [
       startingPrice: "₹2.5Cr",
       growth: "12%",
       tags: ["Private Pool", "Garden", "Premium"],
-      route: "/properties/luxury-villas",
+      route: "/services",
       stats: [
         { label: "Avg. Size", value: "3000-8000 sqft" },
         { label: "Rental Yield", value: "2-3%" }
@@ -549,7 +549,7 @@ const properties: Property[] = [
       startingPrice: "₹15L",
       growth: "22%",
       tags: ["Residential", "Commercial", "Farmhouse"],
-      route: "/properties/plots",
+      route: "/services",
       stats: [
         { label: "Avg. Size", value: "100-500 sqyd" },
         { label: "Appreciation", value: "20-25%" }
@@ -565,7 +565,7 @@ const properties: Property[] = [
       startingPrice: "₹18L",
       growth: "20%",
       tags: ["Compact", "Affordable", "Furnished"],
-      route: "/properties/studio",
+      route: "/services",
       stats: [
         { label: "Avg. Size", value: "300-600 sqft" },
         { label: "Rental Yield", value: "4-5%" }
@@ -581,7 +581,7 @@ const properties: Property[] = [
       startingPrice: "₹75L",
       growth: "16%",
       tags: ["Independent", "2-3 Floors", "Privacy"],
-      route: "/properties/builder-floors",
+      route: "/services",
       stats: [
         { label: "Avg. Size", value: "1200-2500 sqft" },
         { label: "Rental Yield", value: "3-4%" }

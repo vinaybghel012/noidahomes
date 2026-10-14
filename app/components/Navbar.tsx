@@ -32,36 +32,25 @@ export default function Navbar() {
       name: 'Services',
       href: '/services',
       dropdown: [
-        { name: 'Buy Property', href: '/services/buy', description: 'Find your dream home' },
-        { name: 'Sell Property', href: '/services/sell', description: 'Get the best price' },
-        { name: 'Rent Assistance', href: '/services/rent', description: 'Hassle-free rental' },
-        { name: 'Home Loan Assistance', href: '/services/loan', description: 'Best interest rates' },
-        { name: 'Interior Services', href: '/services/interior', description: 'Design your space' },
-        { name: 'Property Management', href: '/services/management', description: 'Complete management' },
+        { name: 'Buy Property', href: '/services', description: 'Find your dream home' },
+        { name: 'Sell Property', href: '/services', description: 'Get the best market price' },
+        { name: 'Rent Assistance', href: '/services', description: 'Hassle-free rental services' },
+        { name: 'Home Loan Support', href: '/services', description: 'Best interest rate guidance' },
+        { name: 'Property Management', href: '/services', description: 'End-to-end asset care' },
+        { name: 'Legal Assistance', href: '/services', description: 'Title verification & documentation' },
       ],
     },
     {
       name: 'Locations',
       href: '/location',
       dropdown: [
-        { name: 'Gurugram', href: '/locations/gurugram' },
-        { name: 'Noida', href: '/locations/noida' },
-        { name: 'Delhi', href: '/locations/delhi' },
-        { name: 'Greater Noida', href: '/locations/greater-noida' },
-        { name: 'Faridabad', href: '/locations/faridabad' },
-        { name: 'Ghaziabad', href: '/locations/ghaziabad' },
-        { name: 'View All Locations', href: '/all-locations' },
-      ],
-    },
-    {
-      name: 'Blog',
-      href: '/blog',
-      dropdown: [
-        { name: 'Property Guides', href: '/blog/guides' },
-        { name: 'Market Trends', href: '/blog/trends' },
-        { name: 'Home Decor', href: '/blog/decor' },
-        { name: 'Legal Advice', href: '/blog/legal' },
-        { name: 'Investment Tips', href: '/blog/investment' },
+        { name: 'Noida', href: '/location' },
+        { name: 'Greater Noida', href: '/location' },
+        { name: 'Gurugram', href: '/location' },
+        { name: 'Delhi', href: '/location' },
+        { name: 'Ghaziabad', href: '/location' },
+        { name: 'Faridabad', href: '/location' },
+        { name: 'View All Locations', href: '/location' },
       ],
     },
     { name: 'Contact Us', href: '/contect_us' },
@@ -157,6 +146,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 text-gray-700"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
             </button>
@@ -178,7 +168,10 @@ export default function Navbar() {
                       {item.name}
                     </Link>
                     {item.dropdown && (
-                      <button onClick={() => toggleMobileDropdown(item.name)}>
+                      <button 
+                        onClick={() => toggleMobileDropdown(item.name)}
+                        aria-label={`Toggle ${item.name} dropdown menu`}
+                      >
                         <ChevronDownIcon
                           className={`h-4 w-4 transition-transform ${
                             activeDropdown === item.name ? 'rotate-180' : ''

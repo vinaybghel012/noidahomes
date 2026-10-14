@@ -248,16 +248,17 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
+            {/* Company Links */}
             <h4 className="font-semibold text-lg mb-6">Company</h4>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -269,12 +270,12 @@ export default function Footer() {
             <ul className="space-y-3 mb-6">
               {supportLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -328,7 +329,9 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               <img
                 src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=80&h=40&fit=crop"
-                alt="Payment Methods"
+                alt="100% Secure Payment Gateways"
+                width="80"
+                height="40"
                 className="h-8 opacity-50"
               />
               <div className="text-gray-400 text-sm">
