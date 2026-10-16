@@ -83,11 +83,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/services/:path+",
-        destination: "/services",
-        permanent: true,
-      },
-      {
         source: "/all-categories",
         destination: "/services",
         permanent: true,

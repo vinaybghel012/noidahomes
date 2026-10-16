@@ -15,12 +15,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const locations = [
-    { name: "Gurugram", count: "2,500+ Properties" },
-    { name: "Noida", count: "1,800+ Properties" },
-    { name: "Delhi", count: "3,200+ Properties" },
-    { name: "Greater Noida", count: "1,200+ Properties" },
-    { name: "Faridabad", count: "900+ Properties" },
-    { name: "Ghaziabad", count: "1,100+ Properties" }
+    { name: "Gurugram", count: "2,500+ Properties", href: "/location/gurugram" },
+    { name: "Noida", count: "1,800+ Properties", href: "/location/noida" },
+    { name: "Delhi", count: "3,200+ Properties", href: "/location/delhi" },
+    { name: "Greater Noida", count: "1,200+ Properties", href: "/location/greater-noida" },
+    { name: "Faridabad", count: "900+ Properties", href: "/location/faridabad" },
+    { name: "Ghaziabad", count: "1,100+ Properties", href: "/location/ghaziabad" }
   ];
 
   const categories = [
@@ -195,7 +195,7 @@ export default function Footer() {
               {locations.map((location) => (
                 <li key={location.name}>
                   <Link
-                    href="/location"
+                    href={location.href || "/location"}
                     className="text-gray-400 hover:text-white transition-colors flex justify-between group"
                   >
                     <span>{location.name}</span>
